@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: martins.zalcmanis
+Build-Jdk: 1.7.0_21
+Implementation-Title: DDS2-JClient-JForex
+Implementation-Version: 2.31
+Implementation-Vendor-Id: com.dukascopy.dds2
+Implementation-Vendor: DUKASCOPY Bank(Suisse) SA
+Main-Class: com.dukascopy.dds2.greed.GreedClient
+Application-Name: JForex Client
+Codebase: *
+Permissions: all-permissions
+

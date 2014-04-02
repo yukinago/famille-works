@@ -1,0 +1,12 @@
+JarIndex-Version: 1.0
+
+patterns-1.28.jar
+META-INF
+META-INF/maven
+META-INF/maven/com.dukascopy.dds2
+META-INF/maven/com.dukascopy.dds2/patterns
+com
+com/dukascopy
+com/dukascopy/patterns
+com/dukascopy/patterns/figures
+

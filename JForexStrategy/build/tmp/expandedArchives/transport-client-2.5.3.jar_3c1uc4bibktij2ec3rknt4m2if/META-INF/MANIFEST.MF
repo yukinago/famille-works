@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: dmitrijs.irikovs
+Build-Jdk: 1.7.0_05
+Implementation-Title: Mina Transport Client
+Implementation-Version: 2.5.3
+Implementation-Vendor-Id: com.dukascopy.dds2.transport
+Application-Name: Mina Transport Client
+Codebase: *
+Permissions: all-permissions
+

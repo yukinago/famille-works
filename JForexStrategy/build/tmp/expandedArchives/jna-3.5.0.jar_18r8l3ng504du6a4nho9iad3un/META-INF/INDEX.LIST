@@ -1,0 +1,19 @@
+JarIndex-Version: 1.0
+
+/Users/andrejs.burenins/Downloads/jna-3.5.0.jar
+com
+com/sun
+com/sun/jna
+com/sun/jna/linux-amd64
+com/sun/jna/ptr
+com/sun/jna/win32
+com/sun/jna/win32-x86
+com/sun/jna/darwin
+com/sun/jna/linux-i386
+com/sun/jna/sunos-x86
+com/sun/jna/sunos-amd64
+com/sun/jna/sunos-sparc
+com/sun/jna/sunos-sparcv9
+com/sun/jna/win32-amd64
+com/sun/jna/w32ce-arm
+

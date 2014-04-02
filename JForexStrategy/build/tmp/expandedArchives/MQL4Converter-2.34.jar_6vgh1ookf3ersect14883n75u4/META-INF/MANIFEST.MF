@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: martins.zalcmanis
+Build-Jdk: 1.7.0_21
+Implementation-Title: MQL4Converter
+Implementation-Version: 2.34
+Implementation-Vendor-Id: com.dukascopy.converter
+Main-Class: com.dukascopy.converter.ConverterLauncher
+Application-Name: MQL4Converter
+Codebase: *
+Permissions: all-permissions
+

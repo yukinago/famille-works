@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: andrejs.burenins
+Build-Jdk: 1.7.0_25
+Implementation-Title: DDS2-TextEditor
+Implementation-Version: 1.21
+Implementation-Vendor-Id: org.fife
+Codebase: *
+Permissions: all-permissions
+

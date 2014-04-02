@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.dukascopy.converter</groupId>
+	<artifactId>MQL4Converter</artifactId>
+	<name>MQL4Converter</name>
+	<version>2.34</version>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<scm>
+		<connection>
+			scm:git:https://code.site.dukascopy.com/JAVA/DDS2/Platforms/MQL/MQL4Converter/
+		</connection>
+	</scm>
+
+    <distributionManagement>
+        <repository>
+            <id>dukascopy</id>
+            <name>Dukascopy releases</name>
+            <url>https://repo.site.dukascopy.com:8081/artifactory/dukascopy@repo</url>
+        </repository>
+        <snapshotRepository>
+            <id>dukascopy</id>
+            <name>Dukascopy snapshots</name>
+            <url>https://repo.site.dukascopy.com:8081/artifactory/dukascopy-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+    <!-- no test -->
+  
+		<sourceDirectory>src</sourceDirectory>
+		<testSourceDirectory>test</testSourceDirectory>
+
+		<resources>
+			<resource>
+				<targetPath>./</targetPath>
+				<filtering>false</filtering>
+				<directory>lib</directory>
+			</resource>
+			<resource>
+				<directory>rc</directory>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<inherited>true</inherited>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<fork>true</fork>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3.2</version>
+				<inherited>true</inherited>
+				<configuration>
+					<archive>
+						<index>true</index>
+						<manifest>
+							<addDefaultImplementationEntries> true
+							</addDefaultImplementationEntries>
+							<mainClass>com.dukascopy.converter.ConverterLauncher</mainClass>
+						</manifest>
+						<manifestEntries>
+							<Permissions>all-permissions</Permissions>
+							<Codebase>*</Codebase>
+							<Application-Name>${project.name}</Application-Name>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>  
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.5</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.5</version>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>com.dukascopy.api</groupId>
+            <artifactId>JForex-API</artifactId>
+            <version>DDS2-SNAPSHOT</version>
+            <optional>false</optional>
+        </dependency>
+	</dependencies>
+</project>
+

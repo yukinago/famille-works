@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: daniel.taube
+Build-Jdk: 1.7.0_21
+Implementation-Title: transport-common
+Implementation-Version: 0.3.3
+Implementation-Vendor-Id: com.dukascopy.dds4
+Application-Name: transport-common
+Codebase: *
+Permissions: all-permissions
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="schema.xsd"
+	package="com.dukascopy.dds3.transport.msg.authorization" autoExtends="com.dukascopy.dds4.transport.msg.system.ProtocolMessage">
+
+	<message class="LoginResponseMessage">
+		<constructor fields="username,authentificationPassed" />
+		<fields>
+			<field name="username" type="String" />
+			<field name="authentificationPassed" type="boolean" />
+			<field name="reason" type="String" />
+		</fields>
+	</message>
+
+</messages>

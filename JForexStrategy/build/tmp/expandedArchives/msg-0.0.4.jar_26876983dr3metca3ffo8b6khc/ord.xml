@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="schema.xsd"
+          package="com.dukascopy.dds3.transport.msg.ord"
+          autoExtends="com.dukascopy.dds4.transport.msg.system.ProtocolMessage">
+    <message class="RasAsyncWritable">
+        <fields>
+            <field name="bestBid" type="BigDecimal"/>
+            <field name="bestAsk" type="BigDecimal"/>
+            <field name="checkTime" type="Long"/>
+            <field name="init" type="boolean"/>
+            <field name="tag" type="String"/>
+            <field name="internalIp" type="String"/>
+            <field name="externalIp" type="String"/>
+            <field name="platform" type="String"/>
+        </fields>
+    </message>
+
+
+    <message class="SignalMessage">
+        <fields>
+            <field name="instrument" type="String"/>
+            <field name="orderId" type="String"/>
+            <field name="amount" type="BigDecimal"/>
+            <field name="side" type="com.dukascopy.dds3.transport.msg.types.OrderSide"/>
+            <field name="priceStop" type="BigDecimal"/>
+            <field name="stopDirection" type="com.dukascopy.dds3.transport.msg.types.StopDirection"/>
+            <field name="priceTrailingLimit" type="BigDecimal"/>
+        </fields>
+    </message>
+
+    <message class="NotificationMessage" extends="com.dukascopy.dds4.transport.msg.system.SessionProtocolMessage">
+        <fields>
+            <field name="level" type="com.dukascopy.dds3.transport.msg.types.NotificationLevel"/>
+            <field name="code" type="com.dukascopy.dds3.transport.msg.types.NotificationMessageCode"></field>
+            <field name="text" type="String"/>
+            <field name="orderId" type="String"/>
+            <field name="orderGroupId" type="String"/>
+            <field name="externalSysId" type="String"/>
+            <field name="ttl" type="Long"/>
+        </fields>
+    </message>
+
+    <message class="TradeMessage" extends="RasAsyncWritable">
+        <constructor fields=" tradeId,
+                     orderId,
+                     marketPlace,
+                     instrument,
+                     initiator,
+                     counterParty,
+                     amountPrimary,
+                     amountSecondary,
+                     price,
+                     refPrice,
+                     parentOrderId,
+                     side,
+                     origSystemId"/>
+        <constructor fields=" tradeId,
+                     orderId,
+                     marketPlace,
+                     instrument,
+                     initiator,
+                     counterParty,
+                     amountPrimary,
+                     amountSecondary,
+                     price"/>
+        <fields>
+            <field name="tradeId" type="Long"/>
+            <field name="orderId" type="String"/>
+            <field name="orderGroupId" type="String"/>
+            <field name="marketPlace" type="String"/>
+            <field name="instrument" type="String"/>
+            <field name="initiator" type="String"/>
+            <field name="counterParty" type="String"/>
+            <field name="amountPrimary" type="BigDecimal"/>
+            <field name="amountSecondary" type="BigDecimal"/>
+            <field name="price" type="BigDecimal"/>
+            <field name="refPrice" type="BigDecimal"/>
+            <field name="parentOrderId" type="String"/>
+            <field name="side" type="com.dukascopy.dds3.transport.msg.types.OrderSide"/>
+            <field name="origSystemId" type="String"/>
+            <field name="fundTrade" type="boolean"/>
+            <field name="valueDate" type="java.util.Date"/>
+            <field name="clientId" type="String"/>
+            <field name="wlTrade" type="boolean"/>
+            <field name="feedCommPip" type="BigDecimal"/>
+            <field name="feedCommDukas" type="BigDecimal"/>
+            <field name="feedCommnonDukas" type="BigDecimal"/>
+        </fields>
+        <method name="getCurrencyPrimary" returnType="String">
+            if (instrument!=null){
+            return instrument.split("/")[0];
+            }
+            return null;
+        </method>
+        <method name="getCurrencySecondary" returnType="String">
+            if (instrument!=null){
+            return instrument.split("/")[1];
+            }
+            return null;
+        </method>
+    </message>
+
+
+    <message class="OrderMessage" extends="RasAsyncWritable">
+        <fields>
+            <field name="orderId" type="String"/>
+            <field name="rootOrderId" type="String"/>
+            <field name="instrument" type="String"/>
+            <field name="amount" type="BigDecimal"/>
+            <field name="side" type="com.dukascopy.dds3.transport.msg.types.OrderSide"/>
+            <field name="priceLimit" type="BigDecimal"/>
+            <field name="priceTrailingLimit" type="BigDecimal"/>
+            <field name="priceStop" type="BigDecimal"/>
+            <field name="priceClient" type="BigDecimal"/>
+            <field name="priceClientInitial" type="BigDecimal"/>
+            <field name="orderGroupId" type="String"/>
+            <field name="direction" type="com.dukascopy.dds3.transport.msg.types.OrderDirection"/>
+            <field name="stopDirection" type="com.dukascopy.dds3.transport.msg.types.StopDirection"/>
+            <field name="oco" type="boolean"/>
+            <field name="state" type="com.dukascopy.dds3.transport.msg.types.OrderState"/>
+            <list name="trades" elementClass="com.dukascopy.dds3.transport.msg.ord.TradeMessage"/>
+            <field name="rejectReason" type="com.dukascopy.dds3.transport.msg.types.CustRejectReason"/>
+            <field name="notes" type="String"/>
+            <field name="execTimeoutMillis" type="Long"/>
+            <field name="placeOffer" type="boolean"/>
+            <field name="parentOrderId" type="String"/>
+            <field name="createdDate" type="java.util.Date"/>
+            <field name="mcOrder" type="boolean"/>
+            <field name="executionSeqTime" type="String"/>
+            <field name="trailingStop" type="BigDecimal"/>
+            <field name="externalSysId" type="String"/>
+            <field name="strategyId" type="String"/>
+            <field name="ifdParentOrderId" type="String"/>
+            <field name="rollover" type="boolean"/>
+            <field name="pricePosOpen" type="BigDecimal"/>
+            <field name="clientId" type="String"/>
+            <field name="origOrdGrId" type="String"/>
+            <field name="origAmount" type="BigDecimal"/>
+            <field name="fillOrKill" type="boolean"/>
+            <field name="feedCommission" type="BigDecimal"/>
+            <field name="feedCommissionBid" type="BigDecimal"/>
+            <field name="feedCommissionAsk" type="BigDecimal"/>
+            <field name="priceOpen" type="BigDecimal"/>
+            <field name="immediateOrCancel" type="boolean"/>
+            <field name="executorId" type="String"/>
+            <field name="sessionId" type="String"/>
+            <field name="signalId" type="String"/>
+            <field name="internalId" type="String"/>
+            <field name="externalId" type="String"/>
+            <field name="orderCommission" type="BigDecimal"/>
+            <field name="platfTime" type="java.util.Date"/>
+            <field name="platfBid" type="BigDecimal"/>
+            <field name="platfAsk" type="BigDecimal"/>
+            <field name="strategyType" type="Integer"/>
+            <field name="convPip" type="BigDecimal"/>
+            <field name="managerId" type="String"/>
+            <field name="execAmount" type="BigDecimal"/>
+            <field name="execPrice" type="BigDecimal"/>
+        </fields>
+        <method name="getCurrencyPrimary" returnType="String">
+            if (instrument!=null){
+            return instrument.split("/")[0];
+            }
+            return null;
+        </method>
+        <method name="getCurrencySecondary" returnType="String">
+            if (instrument!=null){
+            return instrument.split("/")[1];
+            }
+            return null;
+        </method>
+        <method name="isStopLoss" returnType="boolean">
+            if (com.dukascopy.dds3.transport.msg.types.OrderDirection.CLOSE == getDirection() &amp;&amp; null !=
+            getPriceStop()) {
+            if (com.dukascopy.dds3.transport.msg.types.OrderSide.SELL == getSide())
+            return com.dukascopy.dds3.transport.msg.types.StopDirection.LESS_ASK == getStopDirection() ||
+            com.dukascopy.dds3.transport.msg.types.StopDirection.LESS_BID == getStopDirection();
+            else
+            return com.dukascopy.dds3.transport.msg.types.StopDirection.GREATER_ASK == getStopDirection() ||
+            com.dukascopy.dds3.transport.msg.types.StopDirection.GREATER_BID == getStopDirection();
+            }
+            return false;
+        </method>
+        <method name="isTakeProfit" returnType="boolean">
+            if (com.dukascopy.dds3.transport.msg.types.OrderDirection.CLOSE == getDirection() &amp;&amp; null !=
+            getPriceStop()) {
+            if (com.dukascopy.dds3.transport.msg.types.OrderSide.BUY == getSide())
+            return com.dukascopy.dds3.transport.msg.types.StopDirection.LESS_ASK == getStopDirection() ||
+            com.dukascopy.dds3.transport.msg.types.StopDirection.LESS_BID == getStopDirection();
+            else
+            return com.dukascopy.dds3.transport.msg.types.StopDirection.GREATER_ASK == getStopDirection() ||
+            com.dukascopy.dds3.transport.msg.types.StopDirection.GREATER_BID == getStopDirection();
+            }
+            return false;
+        </method>
+        <method name="isMIT" returnType="boolean">
+            if (null != getPriceStop()
+            &amp;&amp; this.getPriceTrailingLimit() != null
+            &amp;&amp; getPriceTrailingLimit().compareTo(BigDecimal.ZERO) != 0) {
+            if (OrderSide.BUY == getSide())
+            return com.dukascopy.dds3.transport.msg.types.StopDirection.LESS_ASK == getStopDirection() ||
+            com.dukascopy.dds3.transport.msg.types.StopDirection.LESS_BID == getStopDirection();
+            else
+            return com.dukascopy.dds3.transport.msg.types.StopDirection.GREATER_ASK == getStopDirection() ||
+            com.dukascopy.dds3.transport.msg.types.StopDirection.GREATER_BID == getStopDirection();
+            }
+            return false;
+        </method>
+        <method name="isLimit" returnType="boolean">
+            if (null != getPriceStop()
+            &amp;&amp; this.getPriceTrailingLimit() != null
+            &amp;&amp; getPriceTrailingLimit().compareTo(BigDecimal.ZERO) == 0) {
+            if (OrderSide.BUY == getSide())
+            return com.dukascopy.dds3.transport.msg.types.StopDirection.LESS_ASK == getStopDirection() ||
+            com.dukascopy.dds3.transport.msg.types.StopDirection.LESS_BID == getStopDirection();
+            else
+            return com.dukascopy.dds3.transport.msg.types.StopDirection.GREATER_ASK == getStopDirection() ||
+            com.dukascopy.dds3.transport.msg.types.StopDirection.GREATER_BID == getStopDirection();
+            }
+            return false;
+        </method>
+        <method name="getTTLAsString" returnType="String">
+
+            if (getExecTimeoutMillis() == null)
+            return "";
+            long GTC_THRESHOLD = 60000L * 60 * 24 * 365 * 2L;
+            long currentPlatformTime = System.currentTimeMillis();
+
+            // abs is not bug proof
+            // FIXME assume that order.getExecTimeoutMillis() is
+            if (getExecTimeoutMillis() > currentPlatformTime) {
+            long deltaMillis = getExecTimeoutMillis() - currentPlatformTime;
+            if (deltaMillis > GTC_THRESHOLD) {
+            // GTC
+            return " EXPIRES: GTC";
+            } else {
+            java.util.Calendar cal = java.util.Calendar.getInstance(java.util.TimeZone.getTimeZone("GMT"));
+            cal.setTimeInMillis(getExecTimeoutMillis());
+
+            java.text.SimpleDateFormat simpleDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+            simpleDateFormat.setTimeZone(java.util.TimeZone.getTimeZone("GMT"));
+
+            return " EXPIRES: " + simpleDateFormat.format(cal.getTime());
+            }
+            } else {
+            java.text.SimpleDateFormat simpleDateFormat = new java.text.SimpleDateFormat("HH' hour 'mm' min 'ss' sec'");
+            simpleDateFormat.setTimeZone(java.util.TimeZone.getTimeZone("GMT"));
+            return " EXPIRES after: " + simpleDateFormat.format(new java.util.Date(getExecTimeoutMillis()));
+            }
+        </method>
+        <method name="addTrade" argNames="trade" argTypes="TradeMessage" returnType="void">
+        	trades.add(trade);
+        </method>
+        <method name="getExecutedAmount" returnType="BigDecimal">
+		    BigDecimal result = BigDecimal.ZERO;
+		    for (TradeMessage trade : trades) {
+		      result = result.add(trade.getAmountPrimary());
+		    }
+		    return result;
+        </method>
+        <method name="getExecutionPrice" returnType="BigDecimal">
+	        if (trades.size() == 0) {
+	            return null;
+	        }
+
+	        BigDecimal value = BigDecimal.ZERO;
+	        BigDecimal amount = BigDecimal.ZERO;
+
+	        for (TradeMessage trade : trades) {
+	            BigDecimal tradeAmount = trade.getAmountPrimary();
+	            BigDecimal tradeValue = tradeAmount.multiply(trade.getPrice());
+	            amount = amount.add(tradeAmount);
+	            value = value.add(tradeValue);
+	        }
+
+        	if (amount.compareTo(BigDecimal.ZERO) == 0) {
+            	return null;
+        	} else {
+	            return value.divide(amount, java.math.RoundingMode.HALF_EVEN).stripTrailingZeros();
+    	    }
+        </method>
+    </message>
+
+    <message class="OrderMessageExt" extends="OrderMessage">
+        <fields>
+            <field name="hsexUser" type="boolean"/>
+            <list name="executorBlackList" elementClass="String"/>
+            <field name="fundAccountId" type="String"/>
+            <field name="fundRatio" type="Integer"/>
+            <field name="sdExecutionDelay" type="Long"/>
+            <field name="sdTrailingUsd" type="BigDecimal"/>
+            <field name="zlPresent" type="BigDecimal"/>
+            <field name="zlPrevious" type="BigDecimal"/>
+            <field name="zlOnReceive" type="BigDecimal"/>
+            <field name="dealType" type="String"/>
+            <field name="zlAllPresent" type="BigDecimal"/>
+            <field name="zlAllPrevious" type="BigDecimal"/>
+            <field name="zlAllOnReceive" type="BigDecimal"/>
+            <field name="zlCorrection" type="BigDecimal"/>
+            <field name="spreadExCorrection" type="BigDecimal"/>
+            <field name="nseOwnAmount" type="BigDecimal"/>
+            <field name="commonId" type="String"/>
+            <field name="boCancelReplace" type="boolean"/>
+            <list name="primeBroker" elementClass="String"/>
+            <field name="wlExposure" type="BigDecimal"/>
+            <field name="wlMaxTrade" type="BigDecimal"/>
+            <field name="wlFilter" type="boolean"/>
+            <field name="wlVirtual" type="boolean"/>
+            <field name="reverse" type="boolean"/>
+            <field name="wlRefOrderId" type="String"/>
+            <field name="allowSdex" type="Integer"/>
+            <field name="ifdType" type="String"/>
+            <field name="wlPartnerId" type="Integer"/>
+            <field name="wlTimes" type="String"/>
+            <field name="convMarkup" type="BigDecimal"/>
+            <field name="monAmount" type="BigDecimal"/>
+            <field name="equity" type="BigDecimal"/>
+            <field name="activeTimest" type="Long"/>
+            <field name="matchId" type="String"/>
+            <field name="minAmount" type="BigDecimal"/>
+            <field name="locked" type="boolean"/>
+            <field name="resubmitCount" type="Integer"/>
+            <field name="skipRepeat" type="boolean"/>
+            <field name="bidOfferCancellReplace" type="boolean"/>
+        </fields>
+    </message>
+    <message class="OrderGroupMessage" extends="RasAsyncWritable">
+        <fields>
+            <field name="orderGroupId" type="String"/>
+            <field name="instrument" type="String"/>
+            <list name="orders" elementClass="OrderMessageExt"/>
+            <field name="summaryCommission" type="BigDecimal"/>
+            <field name="amount" type="BigDecimal"/>
+            <field name="priceOpen" type="BigDecimal"/>
+            <field name="pricePosOpen" type="BigDecimal"/>
+            <field name="side" type="com.dukascopy.dds3.transport.msg.types.PositionSide"/>
+            <field name="status" type="com.dukascopy.dds3.transport.msg.types.PositionStatus"/>
+            <field name="ocoMerge" type="boolean"/>
+            <field name="mc" type="boolean"/>
+            <field name="externalSysId" type="String"/>
+            <field name="signalId" type="String"/>
+            <field name="real" type="boolean"/>
+            <field name="managerId" type="String"/>
+        </fields>
+        <method name="getCurrencyPrimary" returnType="String">
+            if (instrument!=null){
+            return instrument.split("/")[0];
+            }
+            return null;
+        </method>
+        <method name="getCurrencySecondary" returnType="String">
+            if (instrument!=null){
+            return instrument.split("/")[1];
+            }
+            return null;
+        </method>
+    </message>
+
+    <message class="OrderSyncMessage">
+        <fields>
+            <field name="orderIds" type="String"/>
+            <field name="positionIds" type="String"/>
+            <field name="init" type="boolean"/>
+        </fields>
+    </message>
+
+    <message class="MergePositionsMessage" extends="RasAsyncWritable">
+        <fields>
+            <set name="positionList" elementClass="String" />
+            <field name="newOrdGrId" type="String"/>
+            <field name="externalSysId" type="String"/>
+            <field name="strategyId" type="String"/>
+        </fields>
+    </message>
+
+</messages>
+

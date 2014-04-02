@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="messages">
+		<xs:complexType>
+			<xs:choice minOccurs="1" maxOccurs="unbounded">
+				<xs:element ref="message" minOccurs="1" maxOccurs="unbounded" />
+				<xs:element ref="enum" minOccurs="0" maxOccurs="unbounded" />
+			</xs:choice>
+			<xs:attribute name="autoExtends" type="xs:string" />
+			<xs:attribute name="package" type="xs:string" use="required" />
+		</xs:complexType>
+		<xs:unique name="messageName">
+			<xs:selector xpath="message" />
+			<xs:field xpath="@class" />
+		</xs:unique>
+		<xs:unique name="enumName">
+			<xs:selector xpath="enum" />
+			<xs:field xpath="@class" />
+		</xs:unique>
+	</xs:element>
+
+	<xs:element name="enum">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="class" type="xs:string" use="required" />
+					<xs:attribute name="values" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="constructor">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="fields" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="message">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element type="xs:string" minOccurs="0" name="comments" />
+				<xs:element ref="constructor" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="fields" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="method" minOccurs="0" maxOccurs="unbounded" />
+			</xs:choice>
+			<xs:attribute name="class" type="xs:string" use="optional" />
+			<xs:attribute name="interface" type="xs:string" use="optional" />
+			<xs:attribute name="extends" type="xs:string" />
+			<xs:attribute name="implements" type="xs:string" />
+		</xs:complexType>
+		<xs:unique name="fieldName">
+			<xs:selector xpath="fields/*" />
+			<xs:field xpath="@name" />
+		</xs:unique>
+	</xs:element>
+	
+	<xs:element name="method">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="name" type="xs:string" />
+					<xs:attribute name="returnType" type="xs:string" />
+					<xs:attribute name="argNames" type="xs:string" />
+					<xs:attribute name="argTypes" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="fields">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="field" />
+				<xs:element ref="set" />
+				<xs:element ref="list" />
+				<xs:element ref="map" />
+				<xs:element ref="array" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="commonField">
+		<xs:sequence>	
+			<xs:element type="xs:string" name="comments" minOccurs="0" maxOccurs="1"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="default" type="xs:string" />
+		<xs:attribute name="transient" type="xs:boolean" />
+
+	</xs:complexType>
+
+	<xs:element name="field">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="commonField">
+					<xs:attribute name="constant" type="xs:boolean" use="optional"/>
+					<xs:attribute name="type" type="xs:string" use="required" />
+					<xs:attribute name="generateToString" type="xs:boolean" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="set">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="commonField">
+					<xs:attribute name="elementClass" type="xs:string"
+						use="required" />
+						<xs:attribute name="generateToString" type="xs:boolean" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="list">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="commonField">
+					<xs:attribute name="elementClass" type="xs:string"
+						use="required" />
+						<xs:attribute name="generateToString" type="xs:boolean" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="array">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="commonField">
+					<xs:attribute name="elementClass" type="xs:string"
+						use="required" />
+					<xs:attribute name="generateToString" type="xs:boolean" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="map">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="commonField">
+					<xs:attribute name="keyClass" type="xs:string" use="required" />
+					<xs:attribute name="valueClass" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

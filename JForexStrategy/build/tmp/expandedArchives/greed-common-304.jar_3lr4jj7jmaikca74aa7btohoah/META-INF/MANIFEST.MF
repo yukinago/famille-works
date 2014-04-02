@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: martins.zalcmanis
+Build-Jdk: 1.7.0_21
+Implementation-Title: DDS2 greed common lib
+Implementation-Version: 304
+Implementation-Vendor-Id: com.dukascopy.dds2
+Application-Name: DDS2 greed common lib
+Codebase: *
+Permissions: all-permissions
+

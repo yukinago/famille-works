@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema.xsd" package="com.dukascopy.dds3.transport.msg.ras" autoExtends="com.dukascopy.dds4.transport.msg.system.ProtocolMessage">
+
+	<message class="DynaSqlMessage">
+	    <constructor fields="action"></constructor>
+		<fields>
+			<field name="sync" type="boolean" default="false" />
+			<field name="action" type="com.dukascopy.dds3.transport.msg.types.SqlAction"/>
+			<field name="query" type="String" />
+			<list name="requestParams" elementClass="RequestParam" />
+            <list name="returnData" elementClass="java.util.Map"/>
+		</fields>
+	</message>
+
+	<message class="RequestParam">
+	   <constructor fields="index, value, type"></constructor>
+		<fields>
+			<field name="index" type="int" />
+			<field name="value" type="java.io.Serializable" />
+			<field name="type" type="int">
+				<comments>SQL data type. See java.sql.Types</comments>
+			</field>
+		</fields>
+	</message>
+
+    <message class="AdminMessage">
+        <constructor fields="name"></constructor>
+        <fields>
+            <field name="name" type="String" />
+            <field name="reloadUserId" type="String" />
+        </fields>
+    </message>
+
+    <message class="IdRezMessage">
+        <constructor fields="sequence,idCount"></constructor>
+        <constructor fields=""></constructor>
+        <fields>
+            <field name="sequence" type="String" />
+            <field name="idCount" type="Long" />
+            <list name="ids" elementClass="Long"/>
+        </fields>
+    </message>
+
+    <message class="OrderResponse">
+        <constructor fields="action"/>
+        <fields>
+            <field name="action" type="String" />
+            <list name="listResponse" elementClass="com.dukascopy.dds4.transport.msg.system.ProtocolMessage"/>
+        </fields>
+    </message>
+
+    <message class="OrderRequest">
+        <constructor fields="action"/>
+        <fields>
+            <field name="action" type="String" />
+            <field name="message" type="com.dukascopy.dds4.transport.msg.system.ProtocolMessage"/>
+            <map name="properties" keyClass="String" valueClass="String"/>
+        </fields>
+    </message>
+
+    <message class="DbWriteMessage">
+        <constructor fields="queueName, queueId, action, message"></constructor>
+        <fields>
+            <field name="queueName" type="String" />
+            <field name="queueId" type="String" />
+            <field name="action" type="String" />
+            <field name="message" type="com.dukascopy.dds4.transport.msg.system.ProtocolMessage"/>
+        </fields>
+    </message>
+
+    <message class="DbProcedurePost">
+        <constructor fields="sql"></constructor>
+        <fields>
+            <field name="sql" type="String" />
+            <map name="parameters" keyClass="String" valueClass="String"/>
+        </fields>
+    </message>
+
+</messages>

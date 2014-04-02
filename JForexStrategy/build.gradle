@@ -1,0 +1,74 @@
+apply plugin: "java"
+apply plugin: "maven"
+apply plugin: "eclipse"
+
+
+def defaultEncoding = 'UTF-8'
+[compileJava, compileTestJava]*.options*.encoding = defaultEncoding
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '1.0'
+
+jar.baseName = 'prominent-jforex' 
+jar.version = version
+
+repositories {
+	mavenCentral()
+	maven { url 'http://www.dukascopy.com/client/jforexlib/publicrepo/' }
+}
+
+ext.mainClass = 'jp.biz.prominent.jforex.StrategyMain'
+
+// 依存ライブラリ定義
+dependencies {
+	// Commons
+	compile 'org.apache.commons:commons-io:1.+'
+	compile 'org.apache.commons:commons-lang3:3.+'
+	compile 'org.apache.commons:commons-collections4:4.+'
+	compile 'commons-codec:commons-codec:1.+'
+	// ロギング
+	compile 'commons-logging:commons-logging:1.1.+'
+	compile 'org.slf4j:slf4j-api:1.7.+'
+	compile 'org.slf4j:slf4j-simple:1.7.+'
+	compile 'log4j:log4j:1.+'
+	// DI
+	compile 'com.google.inject:guice:3.0'
+	compile 'org.mybatis:mybatis:3.2.+'
+	compile 'org.mybatis:mybatis-guice:3.+'
+	// JForexAPI
+	compile 'com.dukascopy.dds2:DDS2-jClient-JForex:2.31'
+	compile 'com.dukascopy.api:JForex-API:2.9.6.1'
+	
+	// SetterGetter省略
+	compile 'org.projectlombok:lombok:1.+'
+	
+	// Database接続
+	runtime 'org.xerial:sqlite-jdbc:3.7.+'
+	// DI実行時
+	runtime 'javax.inject:javax.inject-tck:1'
+
+	// テスト
+	testCompile 'junit:junit:4.+'
+	testCompile 'com.googlecode.jmockit:jmockit:1.+'
+}
+
+test {
+	systemProperties 'property': 'value'
+}
+
+uploadArchives {
+	repositories {
+		 flatDir {
+			 dirs 'repos'
+		 }
+	}
+}
+
+jar {
+	manifest {
+		attributes 'Implementation-Title': 'Prominent JForex Strategy', 'Implementation-Version': version 
+		attributes "Main-Class" : "jp.biz.prominent.jforex.StrategyMain"
+	}
+	from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+}

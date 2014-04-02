@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="schema.xsd"
+          package="com.dukascopy.dds3.transport.msg.acc"
+          autoExtends="com.dukascopy.dds4.transport.msg.system.ProtocolMessage">
+
+    <message class="MoneyMessage" extends="com.dukascopy.dds4.transport.msg.system.ProtocolObject">
+        <fields>
+            <field name="currency" type="String"/>
+            <field name="value" type="BigDecimal"/>
+        </fields>
+    </message>
+    <message class="SetlQuote">
+    <constructor fields="bid,ask,price,instrument" />
+    <fields>
+        <field name="bid" type="BigDecimal"/>
+        <field name="ask" type="BigDecimal"/>
+        <field name="price" type="BigDecimal"/>
+        <field name="commMulti" type="BigDecimal"/>
+        <field name="instrument" type="String"/>
+    </fields>
+    </message>
+
+    <message class="ClientInfoMessage">
+        <fields>
+            <field name="clientId" type="String"/>
+            <field name="ratio" type="BigDecimal"/>
+            <field name="lossLimit" type="BigDecimal"/>
+            <field name="dayLossLimit" type="BigDecimal"/>
+            <field name="lossLimitCur" type="String"/>
+            <field name="lossLimitType" type="Integer"/>
+            <field name="lossLimitAmnt" type="String"/>
+            <field name="state" type="com.dukascopy.dds3.transport.msg.types.AccountState"/>
+            <list name="closedPL" elementClass="MoneyMessage"/>
+            <field name="balanceSystemUsd" type="BigDecimal"/>
+            <field name="balanceMultiplicator" type="BigDecimal"/>
+
+            <field name="takeProfit" type="BigDecimal"/>
+            <field name="minLossLimit" type="BigDecimal"/>
+            <map name="instrQuote" keyClass="String" valueClass="SetlQuote"/>
+
+
+        </fields>
+    </message>
+
+    <message class="FeedCommission">
+        <fields>
+            <field name="mapId" type="Integer"/>
+            <field name="feedComAskPip" type="BigDecimal"/>
+            <field name="feedComBidPip" type="BigDecimal"/>
+            <field name="feedComDukas" type="BigDecimal"/>
+            <field name="feedComNonDukas" type="BigDecimal"/>
+        </fields>
+    </message>
+
+    <message class="AccountInfoMessage">
+        <fields>
+            <field name="name" type="String"/>
+            <field name="balance" type="BigDecimal"/>
+            <field name="currency" type="String"/>
+            <field name="equity" type="BigDecimal"/>
+            <field name="baseEquity" type="BigDecimal"/>
+            <field name="usableMargin" type="BigDecimal"/>
+            <field name="leverage" type="Integer"/>
+            <field name="global" type="boolean"/>
+            <field name="feedCommision" type="BigDecimal"/>
+            <field name="pl" type="BigDecimal"/>
+            <field name="comm" type="BigDecimal"/>
+            <field name="state" type="com.dukascopy.dds3.transport.msg.types.AccountState"/>
+            <field name="onQuote" type="boolean"/>
+            <field name="executor" type="boolean"/>
+            <field name="noMc" type="boolean"/>
+        </fields>
+    </message>
+
+
+    <message class="AccountInfoMessageInit" extends="AccountInfoMessage">
+        <fields>
+            <map name="clientSettings" keyClass="String" valueClass="String"/>
+            <set name="positionIds" elementClass="String"/>
+            <field name="comVol" type="BigDecimal"/>
+            <field name="comPip" type="BigDecimal"/>
+            <field name="comPipPerc" type="BigDecimal"/>
+            <field name="miniFx" type="boolean"/>
+            <field name="minAmount" type="BigDecimal"/>
+            <field name="maxAmount" type="BigDecimal"/>
+            <field name="mcEquityLimit" type="BigDecimal"/>
+            <field name="mcLeverageUse" type="Integer"/>
+            <field name="weekendLeverage" type="Integer"/>
+            <field name="useExternal" type="boolean"/>
+            <field name="maxGroups" type="Integer"/>
+            <field name="maxOrders" type="Integer"/>
+            <field name="mcMode" type="Integer"/>
+            <field name="marginMode" type="Integer"/>
+            <field name="executionMode" type="Integer"/>
+            <list name="clients" elementClass="ClientInfoMessage"/>
+            <set name="clientIds" elementClass="String"/>
+            <field name="fxcmAccountReset" type="BigDecimal"/>
+            <field name="executorType" type="Integer"/>
+            <field name="wlPartnerId" type="Integer"/>
+            <field name="feedCommissionMapId" type="Integer"/>
+            <map name="feedCommissionMap" keyClass="String" valueClass="FeedCommission"/>
+            <field name="wlTimes" type="String"/>
+            <field name="orderGroupIdPrefix" type="String"/>
+            <field name="contest" type="boolean"/>
+            <field name="locked" type="boolean"/>
+            <field name="mergeDenied" type="boolean"/>
+            <field name="marginExt" type="String"/>
+        </fields>
+    </message>
+
+    <message class="AccountInfoMessageLoad" extends="AccountInfoMessageInit">
+        <fields>
+            <field name="fundAccountId" type="String"/>
+            <field name="fundRatio" type="Integer"/>
+            <list name="executorBlackList" elementClass="String"/>
+            <field name="sdExecutionDelay" type="Long"/>
+            <field name="sdTrailingUsd" type="BigDecimal"/>
+            <field name="gat" type="Integer"/>
+            <field name="recordCount" type="Integer"/>
+            <list name="primeBroker" elementClass="String"/>
+            <map name="accountProperties" keyClass="String" valueClass="String"/>
+            <field name="wlFund" type="String"/>
+            <field name="wlFilter" type="boolean"/>
+            <field name="allowSdex" type="Integer"/>
+            <field name="fullReload" type="boolean"/>
+            <field name="fundRatiosExt" type="String"/>
+            <field name="roundScale" type="Integer"/>
+            <field name="marginExt" type="String"/>
+            <field name="ratioPrecision" type="BigDecimal"/>
+            <field name="currencyExposureCalc" type="boolean"/>
+            <field name="noRollover" type="boolean"/>
+            <field name="managementType" type="Integer"/>
+        </fields>
+    </message>
+
+    <message class="ExecutorAccountInfoMessage">
+        <fields>
+            <list name="groups" elementClass="com.dukascopy.dds3.transport.msg.ord.OrderGroupMessage"/>
+            <field name="reloadType" type="String"/>
+            <field name="account" type="AccountInfoMessageLoad"/>
+        </fields>
+    </message>
+    <message class="ExecutorAccountsMessage">
+        <fields>
+            <list name="executors" elementClass="ExecutorAccountInfoMessage"/>
+        </fields>
+    </message>
+    <message class="ManyUsersWarningMessage">
+        <fields>
+            <list name="userIdList" elementClass="String"/>
+        </fields>
+    </message>
+    <message class="AccountInfoRequest">
+        <constructor fields="action" />
+        <fields>
+            <map name="properties" keyClass="String" valueClass="String"/>
+            <field name="action" type="String"/>
+        </fields>
+    </message>
+    <message class="FundRatioChangeMessage">
+        <fields>
+            <map name="exposures" keyClass="String" valueClass="BigDecimal"/>
+            <field name="oldRatio" type="Integer"/>
+            <field name="newRatio" type="Integer"/>
+            <field name="fundAccountId" type="String"/>
+            <field name="reason" type="String"/>
+            <field name="status" type="com.dukascopy.dds3.transport.msg.types.FundRatioChangeStatus"/>
+        </fields>
+    </message>
+
+    <message class="FundRatioChangeGroupMessage">
+        <fields>
+            <list name="messages" elementClass="FundRatioChangeMessage" />
+        </fields>
+    </message>
+
+</messages>
+

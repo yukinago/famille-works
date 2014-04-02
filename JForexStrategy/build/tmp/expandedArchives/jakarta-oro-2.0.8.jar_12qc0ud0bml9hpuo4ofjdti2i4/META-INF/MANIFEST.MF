@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Created-By: Apache Ant 1.5
+Name: org/apache/oro
+Specification-Title: Jakarta ORO
+Specification-Version: 2.0.7
+Specification-Vendor: Apache Software Foundation
+Implementation-Title: org.apache.oro
+Implementation-Version: 2.0.7 2003-01-25 09:27:58
+Implementation-Vendor: Apache Software Foundation
+

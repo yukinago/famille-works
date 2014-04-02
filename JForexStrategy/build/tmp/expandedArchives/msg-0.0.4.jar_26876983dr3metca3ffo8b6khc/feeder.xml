@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="schema.xsd" package="com.dukascopy.dds3.transport.msg.feeder"
+	autoExtends="com.dukascopy.dds4.transport.msg.system.ProtocolMessage">
+
+	<message class="QuoteSubscribeRequestMessage">
+		<fields>
+			<field name="topOfBook" type="boolean" default="false">
+				<comments>if true, then only best Ask and Bid will be received</comments>
+			</field>
+			<set name="instruments" elementClass="String"/>
+			<field name="source" type="String">
+				<comments>Optional datafeed source</comments>
+			</field>
+		</fields>
+	</message>
+	<message class="QuoteUnsubscribeRequestMessage">
+		<fields>
+			<set name="instruments" elementClass="String"/>
+			<field name="source" type="String">
+				<comments>Optional datafeed source</comments>
+			</field>
+		</fields>
+	</message>
+
+
+	<message class="InstrumentStatusUpdateMessage"
+		implements="com.dukascopy.dds4.transport.msg.system.InstrumentableLowMessage">
+		<fields>
+			<field name="instrument" type="String" />
+			<field name="state"
+				type="com.dukascopy.dds3.transport.msg.types.TradabilityState" />
+		</fields>
+	</message>
+
+	<message class="BestCurrencyMarketMessage"
+		implements="com.dukascopy.dds4.transport.msg.system.InstrumentableLowMessage">
+		<comments>Message for transfer bests of currencyMarket</comments>
+		<fields>
+			<field name="instrument" type="String" />
+			<field name="bid"
+				type="com.dukascopy.dds4.transport.msg.system.CurrencyOffer" />
+			<field name="ask"
+				type="com.dukascopy.dds4.transport.msg.system.CurrencyOffer" />
+		</fields>
+	</message>
+
+	<message class="FeedHistoryRequestMessage">
+		<fields>
+			<field name="format" type="com.dukascopy.dds3.transport.msg.types.DataFormat" />
+			<field name="marketDataType" type="String" />
+			<field name="instrument" type="String" />
+			<field name="side" type="com.dukascopy.dds3.transport.msg.types.OfferSide" />
+			<field name="step" type="BigDecimal" />
+			<field name="fromDate" type="Date" />
+			<field name="toDate" type="Date" />
+			<set name="sources" elementClass="String"/>
+		</fields>
+	</message>
+
+
+</messages>

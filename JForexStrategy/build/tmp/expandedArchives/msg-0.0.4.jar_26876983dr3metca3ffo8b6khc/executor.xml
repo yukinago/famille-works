@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema.xsd" package="com.dukascopy.dds3.transport.msg.executor" autoExtends="com.dukascopy.dds4.transport.msg.system.ProtocolMessage">
+
+	<message class="ExecutorOrderMessage">
+		<fields>
+			<field name="orderId" type="String" />
+			<field name="rootOrderId" type="String" />
+			<field name="timeInForce" type="com.dukascopy.dds3.transport.msg.types.TimeInForce" />
+			<field name="side" type="com.dukascopy.dds3.transport.msg.types.OrderSide" />
+			<field name="instrument" type="String" />
+			<field name="amount" type="BigDecimal" />
+			<field name="price" type="BigDecimal" />
+			<field name="managerId" type="String" />
+			<field name="partyId" type="String" />
+			<field name="executor" type="String" />
+		</fields>
+	</message>
+
+	<message class="ExecutorTradeMessage">
+		<fields>
+			<field name="tradeId" type="String" />
+			<field name="orderId" type="String" />
+			<field name="rootOrderId" type="String" />
+			<field name="executorId" type="String" />
+			<field name="brokerId" type="String" />
+			<field name="primeBrokerId" type="String" />
+			<field name="counterparty" type="String" />
+			<field name="side" type="com.dukascopy.dds3.transport.msg.types.OrderSide" />
+			<field name="instrument" type="String" />
+			<field name="executionPrice" type="BigDecimal" />
+			<field name="executedAmount" type="BigDecimal" />
+			<field name="secondaryAmount" type="BigDecimal" />
+			<field name="valueDate" type="java.util.Date" />
+			<field name="tradeDate" type="java.util.Date" />
+			<field name="transactionTime" type="java.util.Date" />
+			<field name="managerId" type="String" />
+			<field name="dropCopy" type="boolean" />
+		</fields>
+	</message>
+
+	<message class="ExecutionResultMessage">
+		<fields>
+			<field name="orderId" type="String" />
+			<field name="orderState" type="com.dukascopy.dds3.transport.msg.types.OrderState" />
+			<field name="rejectReason" type="com.dukascopy.dds3.transport.msg.types.RejectReason" />
+			<field name="notes" type="String" />
+		</fields>
+	</message>
+
+	<message class="ExecutorOnlineMessage">
+		<constructor fields="online" />
+		<fields>
+			<field name="online" type="boolean" />
+		</fields>
+	</message>
+
+	<message class="ExecutorInfoMessage">
+		<constructor fields="executorId, status" />
+		<fields>
+			<field name="executorId" type="String" />
+			<field name="status" type="com.dukascopy.dds4.transport.msg.types.ServiceStatus" />
+			<field name="version" type="String" />
+			<map name="instrumentStates" keyClass="String" valueClass="com.dukascopy.dds3.transport.msg.types.TradabilityState">
+			</map>
+		</fields>
+	</message>
+
+	<message class="LockExecutorRequest">
+		<fields>
+			<field name="reason" type="String" />
+		</fields>
+	</message>
+
+
+</messages>

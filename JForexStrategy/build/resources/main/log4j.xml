@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="sys_LOG" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="log/system.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="2MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %-20c{1} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="EURUSD_LOG" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="log/EURUSD.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="2MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %-20c{1} - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="GBPUSD_LOG" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="log/GBPUSD.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="2MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %-20c{1} - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="EURJPY_LOG" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="log/EURJPY.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="2MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %-20c{1} - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="USDJPY_LOG" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="log/USDJPY.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="2MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %-20c{1} - %m%n" />
+		</layout>
+	</appender>
+	
+	<logger name="EUR/USD">
+		<level value="info" />
+		<appender-ref ref="EURUSD_LOG" />
+	</logger>
+	<logger name="GBP/USD">
+		<level value="info" />
+		<appender-ref ref="GBPUSD_LOG" />
+	</logger>
+	<logger name="EUR/JPY">
+		<level value="info" />
+		<appender-ref ref="EURJPY_LOG" />
+	</logger>
+	<logger name="USD/JPY">
+		<level value="info" />
+		<appender-ref ref="USDJPY_LOG" />
+	</logger>
+	<logger name="jp.biz.prominent.jforex">
+		<level value="info" />
+		<appender-ref ref="sys_LOG" />
+	</logger>
+</log4j:configuration>

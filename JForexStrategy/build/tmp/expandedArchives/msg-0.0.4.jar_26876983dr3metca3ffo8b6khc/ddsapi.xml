@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="schema.xsd" package="com.dukascopy.dds3.transport.msg.ddsApi"
+	autoExtends="com.dukascopy.dds4.transport.msg.system.ProtocolMessage">
+	<message class="InitRequestMessage">
+		<fields>
+			<field name="sendGroups" type="boolean" default="true" />
+			<set name="userIdList" elementClass="String" />
+		</fields>
+	</message>
+	<message class="QuitRequestMessage">
+		<fields />
+	</message>
+	<message class="QuitResponseMessage">
+		<fields />
+	</message>
+	<message class="ApiOnlineMessage">
+		<fields />
+	</message>
+	<message class="CustodianOnlineMessage">
+		<constructor fields="online" />
+		<fields>
+			<field name="online" type="boolean" />
+		</fields>
+	</message>
+
+</messages>

@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: martins.zalcmanis
+Build-Jdk: 1.7.0_21
+Implementation-Title: MQL4Connector
+Implementation-Version: 2.9.6.1
+Implementation-Vendor-Id: com.dukascopy.connector
+Application-Name: MQL4Connector
+Codebase: *
+Permissions: all-permissions
+

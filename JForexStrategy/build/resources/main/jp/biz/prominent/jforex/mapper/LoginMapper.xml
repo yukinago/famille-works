@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.biz.prominent.jforex.mapper.LoginMapper">
+ 
+ 	<!-- カラムとフィールドのマッピング-->
+	<resultMap id="LoginResultMap" type="Login">
+		<id column="login_name" property="loginName" />
+		<result column="password" property="password" />
+	</resultMap>
+ 
+	<!-- テーブル作成 -->
+	<update id="createTable">
+		CREATE TABLE IF NOT EXISTS login(
+			login_name TEXT NOT NULL,
+			password NONE NOT NULL,
+			PRIMARY KEY(login_name)
+		)
+	</update>
+	
+	<!-- 指定レコード取得 -->
+	<select id="select" resultMap="LoginResultMap">
+		SELECT
+			login_name,
+			password
+		FROM
+			login
+	</select>
+	
+	<!-- レコード追加 -->
+	<insert id="insert">
+		INSERT OR REPLACE INTO login (
+			login_name,
+			password
+		) VALUES (
+			#{login.loginName},
+			#{login.password}
+		)
+	</insert>
+	
+	<!-- レコード削除 -->
+	<delete id="delete">
+		DELETE FROM login
+	</delete>
+
+</mapper>

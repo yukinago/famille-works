@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.biz.prominent.jforex.mapper.StrategyConfigMapper">
+ 
+ 	<!-- カラムとフィールドのマッピング-->
+	<resultMap id="StrategyConfigResultMap" type="StrategyConfig">
+		<result column="instruments" property="instruments" />
+		<result column="bar_periods" property="barPeriods" />
+		<result column="lot_per100" property="lotPer100" />
+		<result column="lot_max" property="lotMax" />
+		<result column="pips_entry_threshold" property="pipsEntryThreshold" />
+		<result column="lot_additional" property="lotAdditional" />
+		<result column="pips_additional_threshold" property="pipsAdditionalThreshold" />
+		<result column="retry_count_additional" property="retryCountAdditional" />
+		<result column="pips_loss_cut" property="pipsLossCut" />
+	</resultMap>
+ 
+	<!-- テーブル作成 -->
+	<update id="createTable">
+		CREATE TABLE IF NOT EXISTS strategy_config (
+			instruments TEXT,
+			bar_periods TEXT,
+			lot_per100 REAL,
+			lot_max REAL,
+			pips_entry_threshold INTEGER,
+			lot_additional REAL,
+			pips_additional_threshold INTEGER,
+			retry_count_additional INTEGER,
+			pips_loss_cut INTEGER
+		)
+	</update>
+	
+	<!-- 指定レコード取得 -->
+	<select id="select" resultMap="StrategyConfigResultMap">
+		SELECT
+			instruments,
+			bar_periods,
+			lot_per100,
+			lot_max,
+			pips_entry_threshold,
+			lot_additional,
+			pips_additional_threshold,
+			retry_count_additional,
+			pips_loss_cut
+		FROM
+			strategy_config
+	</select>
+	
+	<!-- レコード追加 -->
+	<insert id="insert">
+		INSERT OR REPLACE INTO strategy_config (
+			instruments,
+			bar_periods,
+			lot_per100,
+			lot_max,
+			pips_entry_threshold,
+			lot_additional,
+			pips_additional_threshold,
+			retry_count_additional,
+			pips_loss_cut
+		) VALUES (
+			#{config.instruments},
+			#{config.barPeriods},
+			#{config.lotPer100},
+			#{config.lotMax},
+			#{config.pipsEntryThreshold},
+			#{config.lotAdditional},
+			#{config.pipsAdditionalThreshold},
+			#{config.retryCountAdditional},
+			#{config.pipsLossCut}
+		)
+	</insert>
+	
+	<!-- レコード削除 -->
+	<delete id="delete">
+		DELETE FROM strategy_config
+	</delete>
+
+</mapper>

@@ -1,0 +1,185 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.dukascopy.connector</groupId>
+	<artifactId>MQL4Connector</artifactId>
+	<version>2.9.6.1</version>
+	<packaging>jar</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<scm>
+		<connection>
+			scm:git:https://code.site.dukascopy.com/JAVA/DDS2/Platforms/MQL/MQL4Connector/
+		</connection>
+	</scm>
+
+    <distributionManagement>
+        <repository>
+            <id>dukascopy</id>
+            <name>Dukascopy releases</name>
+            <url>https://repo.site.dukascopy.com:8081/artifactory/dukascopy@repo</url>
+        </repository>
+        <snapshotRepository>
+            <id>dukascopy</id>
+            <name>Dukascopy snapshots</name>
+            <url>https://repo.site.dukascopy.com:8081/artifactory/dukascopy-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<resources>
+			<resource>
+				<targetPath>./</targetPath>
+				<filtering>false</filtering>
+				<directory>lib</directory>
+			</resource>
+			<resource>
+				<targetPath>rc</targetPath>
+				<filtering>false</filtering>
+				<directory>rc</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<inherited>true</inherited>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<fork>true</fork>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3.2</version>
+				<inherited>true</inherited>
+				<configuration>
+					<archive>
+						<index>true</index>
+						<manifest>
+							<addDefaultImplementationEntries>
+								true
+							</addDefaultImplementationEntries>
+						</manifest>
+						<manifestEntries>
+							<Permissions>all-permissions</Permissions>
+							<Codebase>*</Codebase>
+							<Application-Name>${project.name}</Application-Name>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+				<!-- <configuration> <includes> <include>com/dukascopy/*</include> </includes> 
+					</configuration> -->
+			</plugin>
+		</plugins>
+	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<show>public</show>
+					<!-- excludePackageNames>com.dukascopy.charts:com.dukascopy.dds2:com.dukascopy.api.impl</excludePackageNames> -->
+					<debug>true</debug>
+					<links>
+						<link>http://java.sun.com/javase/6/docs/api/</link>
+					</links>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</reporting>
+	<dependencies>
+		<dependency>
+			<groupId>com.dukascopy.api</groupId>
+			<artifactId>JForex-API</artifactId>
+			<version>2.9.6.1</version>
+			<optional>false</optional>
+		</dependency>
+        <dependency>
+			<groupId>com.sun.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>3.5.0</version>
+		</dependency>
+        <dependency>
+            <groupId>com.dukascopy.converter</groupId>
+            <artifactId>MQL4Converter</artifactId>
+            <version>2.34</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.5</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+            <optional>true</optional>
+        </dependency>
+        <!--
+		<dependency>
+			<groupId>com.dukascopy.api</groupId>
+			<artifactId>nlink</artifactId>
+            <version>DDS2-SNAPSHOT</version>
+			<optional>false</optional>
+		</dependency>
+-->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+			<optional>true</optional>
+		</dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <version>1.5.2</version>
+            <scope>test</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito</artifactId>
+            <version>1.5.2</version>
+            <scope>test</scope>
+            <optional>true</optional>
+        </dependency>
+		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-log4j12</artifactId> 
+			<version>1.5.8</version> <optional>true</optional> </dependency> -->
+
+		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-api</artifactId> 
+			<version>1.5.8</version> <optional>true</optional> </dependency> -->
+	</dependencies>
+</project>
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="schema.xsd"
+	package="com.dukascopy.dds3.transport.msg.monitor" autoExtends="com.dukascopy.dds4.transport.msg.system.ProtocolMessage">
+	
+	<message class="TaskProgressMessage">
+		<constructor fields="taskId" />
+		<fields>
+			<field name="taskId" type="String" />
+			<field name="maxDuration" type="int" />
+			<field name="progress" type="int" />
+			<field name="status" type="com.dukascopy.dds3.transport.msg.types.TaskStatus" />
+			<field name="text" type="String" />
+		</fields>
+	</message>
+
+</messages>

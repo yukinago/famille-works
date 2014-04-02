@@ -1,0 +1,63 @@
+apply plugin: "java"
+apply plugin: "maven"
+apply plugin: "eclipse"
+
+def defaultEncoding = 'UTF-8'
+[compileJava, compileTestJava]*.options*.encoding = defaultEncoding
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '0.1'
+
+jar.baseName = 'tweet-win' 
+jar.version = version
+
+repositories {
+	mavenCentral()
+}
+
+// 依存ライブラリ定義
+dependencies {
+	// Commons
+	compile 'org.apache.commons:commons-io:1.+'
+	compile 'org.apache.commons:commons-lang3:3.+'
+	compile 'org.apache.commons:commons-collections4:4.+'
+	compile 'commons-codec:commons-codec:1.+'
+	// DI
+	compile 'com.google.inject:guice:3.0'
+	compile 'org.mybatis:mybatis:3.2.+'
+	compile 'org.mybatis:mybatis-guice:3.+'
+	// SetterGetter省略
+	compile 'org.projectlombok:lombok:1.+'
+        // JavaFx拡張
+        compile 'org.jfxtras:jfxtras-common:8.0-r1'
+        compile 'org.jfxtras:jfxtras-controls:8.0-r1'
+        compile 'org.jfxtras:jfxtras-fxml:8.0-r1'
+        compile 'org.jfxtras:jfxtras-labs:8.0-r1'
+    
+	// DI実行時
+	runtime 'javax.inject:javax.inject-tck:1'
+	// Database接続
+	runtime 'org.xerial:sqlite-jdbc:3.7.+'
+	// テスト
+	testCompile 'junit:junit:4.+'
+	testCompile 'com.googlecode.jmockit:jmockit:1.+'
+}
+
+test {
+}
+
+uploadArchives {
+	repositories {
+		 flatDir {
+			 dirs '/home/yukinago/.gradle'
+		 }
+	}
+}
+
+jar {
+	manifest {
+		attributes 'Implementation-Title': 'Twitter Windows Client', 'Implementation-Version': version 
+	}
+	from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+}

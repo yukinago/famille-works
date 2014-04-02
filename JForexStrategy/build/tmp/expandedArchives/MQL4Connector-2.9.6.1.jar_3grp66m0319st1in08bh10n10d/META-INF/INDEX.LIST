@@ -1,0 +1,27 @@
+JarIndex-Version: 1.0
+
+MQL4Connector-2.9.6.1.jar
+META-INF
+META-INF/maven
+META-INF/maven/com.dukascopy.connector
+META-INF/maven/com.dukascopy.connector/MQL4Connector
+com
+com/dukascopy
+com/dukascopy/connector
+com/dukascopy/connector/controller
+com/dukascopy/connector/data
+com/dukascopy/connector/engine
+com/dukascopy/connector/lib
+com/dukascopy/connector/lib/drawings
+com/dukascopy/connector/lib/drawings/ind
+com/dukascopy/connector/lib/helpers
+com/dukascopy/connector/lib/helpers/ind
+com/dukascopy/connector/lib/impl
+com/dukascopy/connector/lib/impl/mql5
+com/dukascopy/connector/log
+rc
+rc/examples
+rc/examples/MT4 indicators
+rc/examples/MT4 strategies
+rc/javaBuilder
+

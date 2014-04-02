@@ -1,0 +1,13 @@
+JarIndex-Version: 1.0
+
+transport-client-2.5.3.jar
+META-INF
+META-INF/maven
+META-INF/maven/com.dukascopy.dds2.transport
+META-INF/maven/com.dukascopy.dds2.transport/transport-client
+com
+com/dukascopy
+com/dukascopy/transport
+com/dukascopy/transport/client
+com/dukascopy/transport/client/events
+

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+    <groupId>com.dukascopy.dds2.transport</groupId>
+    <artifactId>transport-client</artifactId>
+    <name>Mina Transport Client</name>
+    <version>2.5.3</version>
+
+    <dependencies>
+        <!-- DDS2 libraries -->
+        <dependency>
+            <groupId>com.dukascopy.dds2</groupId>
+            <artifactId>dds2-common</artifactId>
+            <version>2.5.6</version>
+        </dependency>
+
+        <!-- Third party libraries -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <contributors>
+		<contributor>
+			<name>Karl Tiller</name>
+		</contributor>
+		<contributor>
+			<name>Dmitry Ogibin</name>
+		</contributor>
+    </contributors>
+	<scm>
+		<connection>scm:git:https://code.site.dukascopy.com/JAVA/DDS2/Transport/transport-client</connection>
+	</scm>
+	<distributionManagement>
+		<repository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>dukascopy</id>
+			<name>Dukascopy releases</name>
+			<url>
+                https://repo.site.dukascopy.com:8081/artifactory/dukascopy@repo
+            </url>
+		</repository>
+		<snapshotRepository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>dukascopy</id>
+			<name>Dukascopy snapshots</name>
+			<url>
+                https://repo.site.dukascopy.com:8081/artifactory/dukascopy-snapshots@repo
+            </url>
+		</snapshotRepository>
+	</distributionManagement>
+	<build>
+		 <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <inherited>true</inherited>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <fork>true</fork>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
+                    	<index>true</index>
+						<manifestEntries>
+							<Permissions>all-permissions</Permissions>
+							<Codebase>*</Codebase>
+							<Application-Name>${project.name}</Application-Name>
+						</manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+	</build>
+</project>	
