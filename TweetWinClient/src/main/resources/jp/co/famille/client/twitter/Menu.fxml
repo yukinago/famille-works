@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane"  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="170.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+    <children>
+      <Button id="manageAccount" layoutX="10.0" layoutY="15.0" mnemonicParsing="false" prefWidth="150.0" text="アカウント管理" />
+      <Button id="basicFunction" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefWidth="150.0" text="基本機能" />
+      <Button id="autoFunction" layoutX="10.0" layoutY="85.0" mnemonicParsing="false" prefWidth="150.0" text="自動処理機能" />
+      <Button id="exit" layoutX="10.0" layoutY="120.0" mnemonicParsing="false" prefWidth="150.0" text="終了" />
+    </children>
+</AnchorPane>
