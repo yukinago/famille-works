@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="361.0" prefWidth="731.9998779296875" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="jp.co.famille.client.twitter.controller.AutoFunctionController">
+  <children>
+    <Label layoutX="22.0" layoutY="14.0" text="対象アカウント" />
+    <ListView fx:id="targetAccount" layoutX="22.0" layoutY="27.0" prefHeight="113.0" prefWidth="157.0" />
+    <Button fx:id="btnConfig" layoutX="205.0" layoutY="111.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="109.0" text="設定確認・変更" />
+    <Label layoutX="22.0" layoutY="154.0" text="処理選択" />
+    <VBox layoutX="22.0" layoutY="167.0" prefHeight="129.0" prefWidth="292.0" spacing="10.0">
+      <children>
+        <CheckBox fx:id="chkAutoFollow" mnemonicParsing="false" text="自動フォロー" />
+        <CheckBox fx:id="chkAutoUnFollow" mnemonicParsing="false" text="自動フォロー解除" />
+        <CheckBox fx:id="chkAutoReFollow" mnemonicParsing="false" text="自動リフォロー" />
+        <CheckBox fx:id="chkNewsTweet" mnemonicParsing="false" text="ニュース情報自動ツイート" />
+        <CheckBox id="chkAutoTweet" fx:id="chkRegularTweet" mnemonicParsing="false" text="定期ツイート" />
+      </children>
+      <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </padding>
+    </VBox>
+    <ToggleButton fx:id="btnStart" layoutX="22.0" layoutY="319.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="109.0" text="開始">
+      <toggleGroup>
+        <ToggleGroup fx:id="funcState" />
+      </toggleGroup>
+    </ToggleButton>
+    <ToggleButton fx:id="btnStop" layoutX="205.0" layoutY="319.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="109.0" selected="true" text="停止" toggleGroup="$funcState" />
+    <Label layoutX="358.0" layoutY="14.0" text="ログ" />
+    <TextArea fx:id="logArea" editable="false" layoutX="358.0" layoutY="27.0" prefHeight="321.0" prefWidth="361.0" wrapText="true" />
+  </children>
+</AnchorPane>

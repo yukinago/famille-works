@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
 Implementation-Title: Twitter Windows Client
 Implementation-Version: 0.1
+Main-Class: jp.co.famille.client.twitter.TwitterWinClientApplication
 

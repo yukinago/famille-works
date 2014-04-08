@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="318.0" prefWidth="468.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="jp.co.famille.client.twitter.controller.BasicFunctionController">
+  <children>
+    <Label layoutX="14.0" layoutY="12.0" text="対象アカウント" />
+    <ChoiceBox fx:id="targetAccount" layoutX="14.0" layoutY="28.0" prefWidth="150.0">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="アイテム1" />
+          <String fx:value="アイテム2" />
+          <String fx:value="アイテム3" />
+        </FXCollections>
+      </items>
+    </ChoiceBox>
+    <TabPane fx:id="functionTabPane" layoutX="14.0" layoutY="54.0" prefHeight="257.0" prefWidth="442.0" style="" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+        <Tab fx:id="tabTweet" text="ツイート">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Label layoutX="14.0" layoutY="14.0" text="ツイート内容" />
+                <TextField layoutX="14.0" layoutY="28.0" prefWidth="349.0" />
+                <Button layoutX="371.0" layoutY="28.0" mnemonicParsing="false" text="ツイート" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab fx:id="tabFollow" text="フォロー">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="448.0000999999975" prefWidth="623.0">
+              <children>
+                <Label layoutX="14.0" layoutY="14.0" text="キーワード" />
+                <TextField layoutX="14.0" layoutY="30.0" prefWidth="349.0" />
+                <Button layoutX="370.0" layoutY="30.0" mnemonicParsing="false" text="検索" />
+                <fx:include fx:id="followPeriod" source="include/PeriodFromTo.fxml" layoutX="14.0" layoutY="65.0" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="フォロー解除">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="448.0000999999975" prefWidth="623.0">
+              <children>
+                <Label layoutX="14.0" layoutY="14.0" text="キーワード" />
+                <TextField layoutX="14.0" layoutY="30.0" prefWidth="349.0" />
+                <Button layoutX="370.0" layoutY="30.0" mnemonicParsing="false" text="検索" />
+                <fx:include fx:id="unFollowPeriod" source="include/PeriodFromTo.fxml" layoutX="14.0" layoutY="65.0" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="リツイート">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="221.0" prefWidth="442.0">
+              <children>
+                <Label layoutX="13.0" layoutY="14.0" text="対象アカウント" />
+                <ChoiceBox layoutX="13.0" layoutY="30.0" prefWidth="150.0">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="アイテム1" />
+                      <String fx:value="アイテム2" />
+                      <String fx:value="アイテム3" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+                <Button layoutX="182.0" layoutY="30.0" mnemonicParsing="false" text="検索" />
+                <CheckBox fx:id="useKeyword" layoutX="14.0" layoutY="65.0" mnemonicParsing="false" text="キーワードで絞り込み" />
+                <TextField fx:id="keyword" layoutX="14.0" layoutY="89.0" prefWidth="349.0" disable="true" />
+                <fx:include fx:id="reTweetPeriod" source="include/PeriodFromTo.fxml" layoutX="14.0" layoutY="123.0" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+      </tabs>
+    </TabPane>
+  </children>
+</AnchorPane>
