@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="370.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <Pane layoutX="-3.0" layoutY="14.0" prefHeight="488.0" prefWidth="370.0">
+      <children>
+        <ChoiceBox layoutX="14.0" layoutY="15.0">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="アイテム1" />
+              <String fx:value="アイテム2" />
+              <String fx:value="アイテム3" />
+            </FXCollections>
+          </items>
+        </ChoiceBox>
+        <Label layoutX="14.0" layoutY="44.0" text="キーワード" />
+        <TextField layoutX="14.0" layoutY="57.0" prefWidth="337.0" />
+        <Label layoutX="14.0" layoutY="84.0" text="フォロー対象" />
+        <AnchorPane id="AnchorPane" layoutX="14.0" layoutY="97.0" prefHeight="181.0" prefWidth="343.0">
+          <children>
+            <VBox layoutX="0.0" layoutY="0.0" prefHeight="79.0" prefWidth="131.0" spacing="5.0">
+              <children>
+                <CheckBox mnemonicParsing="false" text="ユーザー名">
+                  <VBox.margin>
+                    <Insets left="10.0" fx:id="x1" />
+                  </VBox.margin>
+                </CheckBox>
+                <CheckBox mnemonicParsing="false" text="プロフィール" VBox.margin="$x1" />
+                <CheckBox mnemonicParsing="false" text="ツイート内容" VBox.margin="$x1" />
+              </children>
+              <padding>
+                <Insets top="10.0" />
+              </padding>
+            </VBox>
+          </children>
+        </AnchorPane>
+        <VBox layoutX="13.0" layoutY="301.0" prefHeight="56.0" prefWidth="337.0" spacing="5.0">
+          <children>
+            <CheckBox mnemonicParsing="false" text="フォロー数がフォロワー数を上回る場合のみフォロー">
+              <VBox.margin>
+                <Insets left="10.0" fx:id="x1" />
+              </VBox.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="フォロー対象のフォロワーもフォロー" VBox.margin="$x1" />
+          </children>
+          <padding>
+            <Insets top="10.0" />
+          </padding>
+        </VBox>
+        <Label layoutX="13.0" layoutY="374.0" text="タイミング設定" />
+        <GridPane hgap="0.0" layoutX="14.0" layoutY="387.0" prefWidth="159.0" vgap="0.0">
+          <children>
+            <Label text="分" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <Label text="人" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="秒" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label text="間隔" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Label text="人数" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Label text="ゆらぎ" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField alignment="CENTER_RIGHT" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <TextField alignment="CENTER_RIGHT" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField alignment="CENTER_RIGHT" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="6.0" prefWidth="59.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="0.0" prefWidth="69.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="31.0" />
+          </columnConstraints>
+          <padding>
+            <Insets left="10.0" right="10.0" top="5.0" />
+          </padding>
+          <rowConstraints>
+            <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+      </children>
+    </Pane>
+    <Label layoutX="13.0" layoutY="301.0" text="詳細オプション" />
+    <Label layoutX="0.0" layoutY="1.0" text="自動フォロー" />
+  </children>
+</AnchorPane>
