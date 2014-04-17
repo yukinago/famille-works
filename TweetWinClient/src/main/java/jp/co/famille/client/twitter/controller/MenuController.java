@@ -6,8 +6,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import jp.co.famlle.javafx.FxmlInfo;
 import jp.co.famlle.javafx.FxmlUtils;
 import lombok.Setter;
 
@@ -33,7 +33,7 @@ public class MenuController implements Initializable {
     
     @Setter
     private Stage primaryStage;
-
+    
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
         assert autoFunction != null : "fx:id=\"autoFunction\" was not injected: check your FXML file 'Menu.fxml'.";
@@ -58,8 +58,11 @@ public class MenuController implements Initializable {
      */
     private void initManageAccount() {
         // アカウント管理画面を生成する
-        AnchorPane root = FxmlUtils.loadRootFromFxml("/jp/co/famille/client/twitter/ManageAccount.fxml");
-        Stage stage = FxmlUtils.createStage(primaryStage, root, "アカウント管理", true);
+        FxmlInfo info = FxmlUtils.loadFromFxml("/jp/co/famille/client/twitter/ManageAccount.fxml");
+        Stage stage = FxmlUtils.createStage(primaryStage, info.getRoot(), "アカウント管理", true);
+        
+        ((ManageAccountController)info.getController()).setPrimaryStage(stage);
+        
         // 画面を表示する
         stage.show();
     }
@@ -69,8 +72,10 @@ public class MenuController implements Initializable {
      */
     private void initBasicFunction() {
         // 基本機能画面を生成する
-        AnchorPane root = FxmlUtils.loadRootFromFxml("/jp/co/famille/client/twitter/BasicFunction.fxml");
-        Stage stage = FxmlUtils.createStage(primaryStage, root, "基本機能", true);
+        FxmlInfo info = FxmlUtils.loadFromFxml("/jp/co/famille/client/twitter/BasicFunction.fxml");
+        Stage stage = FxmlUtils.createStage(primaryStage, info.getRoot(), "基本機能", true);
+        
+        ((BasicFunctionController)info.getController()).setPrimaryStage(stage);
 
         // 画面を表示する
         stage.show();
@@ -81,9 +86,11 @@ public class MenuController implements Initializable {
      */
     private void initAutoFunction() {
         // 基本機能画面を生成する
-        AnchorPane root = FxmlUtils.loadRootFromFxml("/jp/co/famille/client/twitter/AutoFunction.fxml");
-        Stage stage = FxmlUtils.createStage(primaryStage, root, "自動処理機能", true);
-
+        FxmlInfo info = FxmlUtils.loadFromFxml("/jp/co/famille/client/twitter/AutoFunction.fxml");
+        Stage stage = FxmlUtils.createStage(primaryStage, info.getRoot(), "自動処理機能", true);
+        
+        ((AutoFunctionController)info.getController()).setPrimaryStage(stage);
+        
         // 画面を表示する
         stage.show();
     }

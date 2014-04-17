@@ -11,6 +11,8 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import lombok.Setter;
 
 public class BasicFunctionController implements Initializable {
 
@@ -47,6 +49,9 @@ public class BasicFunctionController implements Initializable {
     @FXML
     private CheckBox useKeyword;
 
+    @Setter
+    private Stage primaryStage;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         assert followPeriod != null : "fx:id=\"followPeriod\" was not injected: check your FXML file 'BasicFunction.fxml'.";
@@ -60,15 +65,15 @@ public class BasicFunctionController implements Initializable {
         assert useKeyword != null : "fx:id=\"useKeyword\" was not injected: check your FXML file 'BasicFunction.fxml'.";
 
         functionTabPane.setVisible(false);
-        
+
         useKeyword.setOnAction(e -> {
             keyword.setDisable(!useKeyword.isSelected());
         });
 
         targetAccount.getSelectionModel().selectedIndexProperty().addListener(
             (ObservableValue<? extends Number> observableValue, Number number, Number number2) -> {
-            functionTabPane.setVisible(true);
-        });
+                functionTabPane.setVisible(true);
+            });
     }
 
 }

@@ -9,6 +9,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import jfxtras.scene.control.CalendarTimePicker;
 
 public class TimingConfigWithDateTimeController implements Initializable {
@@ -71,7 +72,7 @@ public class TimingConfigWithDateTimeController implements Initializable {
         assert weekday != null : "fx:id=\"weekday\" was not injected: check your FXML file 'TimingConfigWithDateTime.fxml'.";
         
         CalendarTimePicker timePicker = new CalendarTimePicker();
-        ((GridPane)timingOptionDateTime.getParent()).add(timePicker, 0, 3, 3, 1);
+        ((VBox)timingOptionDateTime.getParent()).getChildren().add(timePicker);
         
         timingOptionMargin.setOnAction(e -> setDisabled());
         timingOptionDateTime.setOnAction(e -> setDisabled());

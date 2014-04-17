@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
+import lombok.Setter;
 
 public class ManageAccountController implements Initializable {
 
@@ -18,14 +20,17 @@ public class ManageAccountController implements Initializable {
     @FXML
     private TableView tblAccount;
 
+    @Setter
+    private Stage primaryStage;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         assert btnAdd != null : "fx:id=\"btnAdd\" was not injected: check your FXML file 'ManageAccount.fxml'.";
         assert btnDelete != null : "fx:id=\"btnDelete\" was not injected: check your FXML file 'ManageAccount.fxml'.";
         assert tblAccount != null : "fx:id=\"tblAccount\" was not injected: check your FXML file 'ManageAccount.fxml'.";
-        
+
         btnDelete.setDisable(true);
-        
+
         btnAdd.setOnAction(e -> {
             // TODO 追加ボタン押下時の処理
             // 認証画面を開く
@@ -34,7 +39,7 @@ public class ManageAccountController implements Initializable {
             // DBに追加したアカウント情報を保存する
             // テーブルにアカウントを追加する
         });
-        
+
         btnDelete.setOnAction(e -> {
             // TODO 削除ボタン押下時の処理
             // テーブルのアカウントを削除する
