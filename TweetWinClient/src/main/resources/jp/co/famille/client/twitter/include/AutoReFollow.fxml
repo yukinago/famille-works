@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="174.9998779296875" prefWidth="198.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <Pane layoutX="0.0" layoutY="14.0" prefHeight="153.0" prefWidth="198.0">
+      <children>
+        <ChoiceBox layoutX="14.0" layoutY="15.0">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="有効" />
+              <String fx:value="無効" />
+            </FXCollections>
+          </items>
+        </ChoiceBox>
+        <fx:include fx:id="timingConfigAutoReFollow" source="TimingConfig.fxml" layoutX="14.0" layoutY="41.0" prefHeight="119.99990000000253" prefWidth="167.99997792968497" />
+      </children>
+    </Pane>
+    <Label layoutX="0.0" layoutY="1.0" text="自動リフォロー" />
+  </children>
+</AnchorPane>

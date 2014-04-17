@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="405.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <Pane layoutX="-1.0" layoutY="11.0" prefHeight="599.0" prefWidth="408.0">
+      <children>
+        <ChoiceBox layoutX="14.0" layoutY="15.0">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="有効" />
+              <String fx:value="無効" />
+            </FXCollections>
+          </items>
+        </ChoiceBox>
+        <Label layoutX="14.0" layoutY="45.0" text="ツイート内容一覧" />
+        <fx:include fx:id="timingConfigNewsTweet" source="TimingConfigWithDateTime.fxml" layoutX="14.0" layoutY="301.0" prefHeight="294.000022070315" prefWidth="167.99997792968497" />
+        <ListView layoutX="14.0" layoutY="60.0" prefHeight="160.0" prefWidth="380.0" />
+        <HBox layoutX="14.0" layoutY="226.0" prefHeight="18.000099999997474" prefWidth="380.0" spacing="20.0">
+          <children>
+            <Button mnemonicParsing="false" text="上へ" />
+            <Button mnemonicParsing="false" text="下へ" />
+            <Button mnemonicParsing="false" text="削除" />
+          </children>
+        </HBox>
+        <Label layoutX="14.0" layoutY="257.0" text="新規ツイート内容" />
+        <TextArea layoutX="14.0" layoutY="271.0" prefHeight="23.0" prefWidth="321.0" wrapText="true" />
+        <Button layoutX="346.0" layoutY="274.0" mnemonicParsing="false" text="追加" />
+        <Label layoutX="211.0" layoutY="302.0" text="詳細オプション" />
+        <VBox layoutX="211.0" layoutY="317.0" padding="$x1" prefHeight="123.0" prefWidth="183.0" spacing="5.0">
+          <children>
+            <Label text="ツイート順序" />
+            <VBox prefHeight="57.0" prefWidth="163.0" spacing="5.0">
+              <children>
+                <RadioButton mnemonicParsing="false" text="指定順序" />
+                <RadioButton mnemonicParsing="false" text="ランダム順序" />
+              </children>
+              <padding>
+                <Insets left="10.0" top="10.0" fx:id="x1" />
+              </padding>
+              <VBox.margin>
+                <Insets right="10.0" />
+              </VBox.margin>
+            </VBox>
+            <CheckBox mnemonicParsing="false" text="リピート" />
+          </children>
+        </VBox>
+      </children>
+    </Pane>
+    <Label layoutX="0.0" layoutY="1.0" text="定期ツイート" />
+  </children>
+</AnchorPane>

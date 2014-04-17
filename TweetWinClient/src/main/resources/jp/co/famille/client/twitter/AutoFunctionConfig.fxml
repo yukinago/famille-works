@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1249.9998779296875" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="jp.co.famille.client.twitter.controller.AutoFunctionController">
+  <children>
+    <fx:include source="include/AutoFollow.fxml" layoutX="13.0" layoutY="15.0" />
+    <fx:include source="include/AutoUnFollow.fxml" layoutX="13.0" layoutY="550.0" />
+    <fx:include source="include/AutoReFollow.fxml" layoutX="209.0" layoutY="551.0" />
+    <fx:include source="include/NewsTweet.fxml" layoutX="398.0" layoutY="14.0" />
+    <fx:include source="include/RegularTweet.fxml" layoutX="830.0" layoutY="14.0" />
+  </children>
+</AnchorPane>

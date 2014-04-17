@@ -7,21 +7,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="119.99990000000253" prefWidth="170.99997792968497" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="119.99990000000253" prefWidth="170.99997792968497" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="jp.co.famille.client.twitter.controller.TimingConfigController">
   <children>
     <Label layoutX="-1.0" layoutY="1.0" text="タイミング設定" />
     <AnchorPane id="AnchorPane" layoutX="-1.0" layoutY="14.0" prefWidth="161.0">
       <children>
         <GridPane hgap="0.0" layoutX="0.0" layoutY="0.0" prefHeight="106.0" prefWidth="172.0" vgap="0.0">
           <children>
-            <TextField alignment="CENTER_RIGHT" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="fluctuation" alignment="CENTER_RIGHT" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="秒" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Label text="ゆらぎ" GridPane.columnIndex="0" GridPane.rowIndex="2" />
             <Label text="間隔" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <TextField alignment="CENTER_RIGHT" prefWidth="67.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <TextField fx:id="margin" alignment="CENTER_RIGHT" prefWidth="67.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             <Label text="分" GridPane.columnIndex="2" GridPane.rowIndex="0" />
             <Label text="人数" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <TextField alignment="CENTER_RIGHT" prefWidth="67.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField id="numberOfPeoples" fx:id="numberOfPeople" alignment="CENTER_RIGHT" prefWidth="67.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="人" GridPane.columnIndex="2" GridPane.rowIndex="1" />
           </children>
           <columnConstraints>
