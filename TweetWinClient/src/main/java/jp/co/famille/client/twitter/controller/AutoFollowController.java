@@ -19,60 +19,47 @@ public class AutoFollowController implements Initializable {
     private URL location;
 
     @FXML
-    private ChoiceBox<?> activateFlgAutoFollow;
+    private ChoiceBox<String> activateFlgAutoFollow;
 
     @FXML
-    private CheckBox followByFollowedCount;
+    private AnchorPane autoFollowDetailOption;
 
     @FXML
-    private CheckBox followByProfile;
-
-    @FXML
-    private CheckBox followByUserName;
-
-    @FXML
-    private CheckBox followFriendFollower;
-
-    @FXML
-    private AnchorPane followPeriodAutoFollow;
-
-    @FXML
-    private CheckBox followTweet;
+    private AnchorPane followTarget;
 
     @FXML
     private TextField keywordAutoFollow;
 
     @FXML
     private AnchorPane timingConfigAutoFollow;
+
+    @FXML
+    private AutoFollowTargetController followTargetController;
     
+    @FXML
+    private AutoFollowDetailOptionController autoFollowDetailOptionController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         assert activateFlgAutoFollow != null : "fx:id=\"activateFlgAutoFollow\" was not injected: check your FXML file 'AutoFollow.fxml'.";
-        assert followByFollowedCount != null : "fx:id=\"followByFollowedCount\" was not injected: check your FXML file 'AutoFollow.fxml'.";
-        assert followByProfile != null : "fx:id=\"followByProfile\" was not injected: check your FXML file 'AutoFollow.fxml'.";
-        assert followByUserName != null : "fx:id=\"followByUserName\" was not injected: check your FXML file 'AutoFollow.fxml'.";
-        assert followFriendFollower != null : "fx:id=\"followFriendFollower\" was not injected: check your FXML file 'AutoFollow.fxml'.";
-        assert followPeriodAutoFollow != null : "fx:id=\"followPeriodAutoFollow\" was not injected: check your FXML file 'AutoFollow.fxml'.";
-        assert followTweet != null : "fx:id=\"followTweet\" was not injected: check your FXML file 'AutoFollow.fxml'.";
+        assert autoFollowDetailOption != null : "fx:id=\"autoFollowDetailOption\" was not injected: check your FXML file 'AutoFollow.fxml'.";
+        assert followTarget != null : "fx:id=\"followTarget\" was not injected: check your FXML file 'AutoFollow.fxml'.";
         assert keywordAutoFollow != null : "fx:id=\"keywordAutoFollow\" was not injected: check your FXML file 'AutoFollow.fxml'.";
         assert timingConfigAutoFollow != null : "fx:id=\"timingConfigAutoFollow\" was not injected: check your FXML file 'AutoFollow.fxml'.";
+        
+        activateFlgAutoFollow.setValue("有効");
 
         // 有効・無効の切り替え
         activateFlgAutoFollow.getSelectionModel().selectedIndexProperty().addListener(
-            (ObservableValue<? extends Number> observableValue, Number number, Number number2) -> {
-                changeActivate();
+            (ObservableValue<? extends Number> observableValue, Number oldIndex, Number newIndex) -> {
+                changeActivate(newIndex.intValue() != 0);
             });
-        changeActivate();
+        changeActivate(activateFlgAutoFollow.getSelectionModel().getSelectedIndex() != 0);
     }
 
-    private void changeActivate() {
-        boolean flg = !"有効".equals(activateFlgAutoFollow.getValue());
-        followByFollowedCount.setDisable(flg);
-        followByProfile.setDisable(flg);
-        followByUserName.setDisable(flg);
-        followFriendFollower.setDisable(flg);
-        followTweet.setDisable(flg);
+    private void changeActivate(boolean flg) {
         keywordAutoFollow.setDisable(flg);
+        autoFollowDetailOptionController.changeActivate(flg);
+        followTargetController.changeActivate(flg);
     }
 }

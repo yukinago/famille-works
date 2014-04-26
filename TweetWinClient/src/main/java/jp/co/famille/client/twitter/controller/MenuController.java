@@ -59,7 +59,7 @@ public class MenuController implements Initializable {
     private void initManageAccount() {
         // アカウント管理画面を生成する
         FxmlInfo info = FxmlUtils.loadFromFxml("/jp/co/famille/client/twitter/ManageAccount.fxml");
-        Stage stage = FxmlUtils.createStage(primaryStage, info.getRoot(), "アカウント管理", true);
+        Stage stage = FxmlUtils.createStage(primaryStage, info.getRoot(), "アカウント管理", false);
         
         ((ManageAccountController)info.getController()).setPrimaryStage(stage);
         
@@ -73,7 +73,7 @@ public class MenuController implements Initializable {
     private void initBasicFunction() {
         // 基本機能画面を生成する
         FxmlInfo info = FxmlUtils.loadFromFxml("/jp/co/famille/client/twitter/BasicFunction.fxml");
-        Stage stage = FxmlUtils.createStage(primaryStage, info.getRoot(), "基本機能", true);
+        Stage stage = FxmlUtils.createStage(primaryStage, info.getRoot(), "基本機能", false);
         
         ((BasicFunctionController)info.getController()).setPrimaryStage(stage);
 
@@ -87,7 +87,7 @@ public class MenuController implements Initializable {
     private void initAutoFunction() {
         // 基本機能画面を生成する
         FxmlInfo info = FxmlUtils.loadFromFxml("/jp/co/famille/client/twitter/AutoFunction.fxml");
-        Stage stage = FxmlUtils.createStage(primaryStage, info.getRoot(), "自動処理機能", true);
+        Stage stage = FxmlUtils.createStage(primaryStage, info.getRoot(), "自動処理機能", false);
         
         ((AutoFunctionController)info.getController()).setPrimaryStage(stage);
         

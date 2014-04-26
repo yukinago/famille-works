@@ -1,6 +1,7 @@
 package jp.co.famille.client.twitter.controller;
 
 import java.net.URL;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,7 +10,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import jfxtras.scene.control.CalendarTimePicker;
 
 public class TimingConfigWithDateTimeController implements Initializable {
@@ -19,6 +19,9 @@ public class TimingConfigWithDateTimeController implements Initializable {
 
     @FXML
     private URL location;
+
+    @FXML
+    private GridPane dateTimeGrid;
 
     @FXML
     private RadioButton timingOptionDateTime;
@@ -58,6 +61,7 @@ public class TimingConfigWithDateTimeController implements Initializable {
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
+        assert dateTimeGrid != null : "fx:id=\"dateTimeGrid\" was not injected: check your FXML file 'TimingConfigWithDateTime.fxml'.";
         assert timingOptionDateTime != null : "fx:id=\"TimingOptionDateTime\" was not injected: check your FXML file 'TimingConfigWithDateTime.fxml'.";
         assert timingOptionMargin != null : "fx:id=\"TimingOptionMargin\" was not injected: check your FXML file 'TimingConfigWithDateTime.fxml'.";
         assert dateTimeOption != null : "fx:id=\"dateTimeOption\" was not injected: check your FXML file 'TimingConfigWithDateTime.fxml'.";
@@ -72,18 +76,24 @@ public class TimingConfigWithDateTimeController implements Initializable {
         assert weekday != null : "fx:id=\"weekday\" was not injected: check your FXML file 'TimingConfigWithDateTime.fxml'.";
         
         CalendarTimePicker timePicker = new CalendarTimePicker();
-        ((VBox)timingOptionDateTime.getParent()).getChildren().add(timePicker);
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
         
+        timePicker.setCalendar(cal);
+        
+        dateTimeGrid.add(timePicker, 1, 3, 2, 1);
+
         timingOptionMargin.setOnAction(e -> setDisabled());
         timingOptionDateTime.setOnAction(e -> setDisabled());
     }
-    
+
     private void setDisabled() {
         boolean flg = timingOptionMargin.isSelected();
-        
+
         margin.setDisable(flg);
         fluctuationMargin.setDisable(flg);
-        
+
         everyDay.setDisable(flg);
         everyWeek.setDisable(flg);
         weekday.setDisable(flg);

@@ -83,7 +83,7 @@ public class AutoFunctionController implements Initializable {
     private void initAutoFunctionConfig() {
         // 自動処理機能の設定画面を生成する
         FxmlInfo info = FxmlUtils.loadFromFxml("/jp/co/famille/client/twitter/AutoFunctionConfig.fxml");
-        Stage stage = FxmlUtils.createStage(primaryStage, info.getRoot(), "アカウント管理", true);
+        Stage stage = FxmlUtils.createStage(primaryStage, info.getRoot(), "自動処理機能／設定確認・変更", false);
         
 //        ((AutoFunctionConfigController)info.getController()).setPrimaryStage(stage);
         

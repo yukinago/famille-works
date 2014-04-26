@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="jp.co.famille.client.twitter.controller.AutoFollowDetailOptionController">
+    <children>
+        <Label layoutX="0" layoutY="0" text="詳細オプション" />
+        <VBox layoutX="0" layoutY="0" spacing="10.0" styleClass="border">
+            <children>
+                <CheckBox fx:id="followByFollowedCount" mnemonicParsing="false" text="フォロー数がフォロワー数を上回る場合のみフォロー" />
+                <CheckBox fx:id="followFriendFollower" mnemonicParsing="false" text="フォロー対象のフォロワーもフォロー" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

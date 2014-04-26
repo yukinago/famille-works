@@ -8,10 +8,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="192.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="jp.co.famille.client.twitter.controller.TimingConfigWithDateTimeController">
+<AnchorPane id="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="jp.co.famille.client.twitter.controller.TimingConfigWithDateTimeController">
   <children>
     <Label layoutX="0.0" layoutY="1.0" text="タイミング設定" />
-    <VBox layoutX="0.0" layoutY="16.0" prefHeight="264.0" prefWidth="192.0">
+    <VBox layoutX="0.0" layoutY="16.0" styleClass="border">
       <children>
         <RadioButton id="TimingOptionMargin" fx:id="timingOptionMargin" mnemonicParsing="false" selected="true" text="間隔を指定">
           <toggleGroup>
@@ -28,24 +28,24 @@
             <Label text="分" GridPane.columnIndex="2" GridPane.rowIndex="0" />
           </children>
           <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="6.0" prefWidth="56.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="0.0" prefWidth="52.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="44.0" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
           </columnConstraints>
           <padding>
-            <Insets left="10.0" right="10.0" top="5.0" />
+            <Insets left="10.0" right="10.0" top="10.0" bottom="10.0" />
           </padding>
           <rowConstraints>
-            <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
           </rowConstraints>
         </GridPane>
-        <RadioButton id="TimingOptionDateTime" fx:id="timingOptionDateTime" mnemonicParsing="false" text="日時を指定" toggleGroup="$timingOption">
+        <RadioButton fx:id="timingOptionDateTime" mnemonicParsing="false" text="日時を指定" toggleGroup="$timingOption">
           <VBox.margin>
             <Insets top="10.0" />
           </VBox.margin>
         </RadioButton>
-        <GridPane hgap="0.0" prefHeight="168.0" prefWidth="172.0" vgap="0.0">
+        <GridPane fx:id="dateTimeGrid" hgap="0.0" prefHeight="168.0" prefWidth="172.0" vgap="0.0">
           <children>
             <RadioButton fx:id="everyDay" mnemonicParsing="false" selected="true" text="毎日" GridPane.columnIndex="0" GridPane.rowIndex="0">
               <toggleGroup>
@@ -58,9 +58,13 @@
             <ChoiceBox fx:id="weekday" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <items>
                 <FXCollections fx:factory="observableArrayList">
-                  <String fx:value="アイテム1" />
-                  <String fx:value="アイテム2" />
-                  <String fx:value="アイテム3" />
+                  <String fx:value="月" />
+                  <String fx:value="火" />
+                  <String fx:value="水" />
+                  <String fx:value="木" />
+                  <String fx:value="金" />
+                  <String fx:value="土" />
+                  <String fx:value="日" />
                 </FXCollections>
               </items>
             </ChoiceBox>
@@ -69,21 +73,22 @@
             <TextField fx:id="fluctuationDateTime" alignment="CENTER_RIGHT" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="秒" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Label text="ゆらぎ" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <Label text="時刻" GridPane.columnIndex="0" GridPane.rowIndex="3" />
           </children>
           <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="6.0" prefWidth="56.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="0.0" prefWidth="52.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="44.0" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
           </columnConstraints>
           <padding>
             <Insets left="10.0" right="10.0" top="5.0" />
           </padding>
           <rowConstraints>
-            <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
           </rowConstraints>
         </GridPane>
       </children>

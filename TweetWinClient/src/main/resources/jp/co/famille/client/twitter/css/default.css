@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+.root {
+    -fx-background-color: white;
+    -fx-padding: 10;
+    -fx-height : auto;
+    -fx-width : auto;
+}
+
+.border {
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-padding: 10;
+    -fx-height : auto;
+    -fx-width : auto;
+}
+
+.area {
+    -fx-padding: 10;
+    -fx-height : auto;
+    -fx-width : auto;
+}

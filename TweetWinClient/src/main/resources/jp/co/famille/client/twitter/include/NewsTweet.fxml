@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="405.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane id="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
-    <Pane layoutX="-3.0" layoutY="14.0" prefHeight="526.0" prefWidth="408.0">
+    <Pane layoutX="0" layoutY="14.0" styleClass="border">
       <children>
         <ChoiceBox layoutX="14.0" layoutY="15.0">
           <items>
@@ -31,11 +31,11 @@
             </FXCollections>
           </items>
         </ChoiceBox>
-        <fx:include fx:id="timingConfigNewsTweet" source="TimingConfigWithDateTime.fxml" layoutX="216.0" layoutY="133.0" prefHeight="294.000022070315" prefWidth="167.99997792968497" />
+        <fx:include fx:id="timingConfigNewsTweet" source="TimingConfigWithDateTime.fxml" layoutX="216.0" layoutY="133.0"/>
         <Label layoutX="14.0" layoutY="132.0" text="取得対象" />
         <ListView layoutX="14.0" layoutY="154.0" prefHeight="273.0" prefWidth="176.0" />
         <Label layoutX="14.0" layoutY="441.0" text="他アカウントの設定をインポート" />
-        <Pane layoutX="14.0" layoutY="454.0" prefHeight="58.0" prefWidth="380.0">
+        <Pane layoutX="14.0" layoutY="454.0" styleClass="border">
           <children>
             <Label layoutX="14.0" layoutY="13.0" text="アカウント" />
             <ChoiceBox layoutX="14.0" layoutY="26.0" prefWidth="188.0">

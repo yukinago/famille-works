@@ -9,14 +9,12 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import jp.co.famille.client.twitter.controller.MenuController;
+import jp.co.famlle.javafx.DefaultScene;
 
 /**
  * Windows向けツイッタークライアントのメインクラス。
@@ -30,6 +28,9 @@ public class TwitterWinClientApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+            // デフォルトのスタイルシートを設定する
+            DefaultScene.setDefaultStyleSheet("/jp/co/famille/client/twitter/css/default.css");
+            
             // fxmlファイルをロードする
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
             AnchorPane root = loader.load();
@@ -38,7 +39,7 @@ public class TwitterWinClientApplication extends Application {
             menuController = loader.getController();
             menuController.setPrimaryStage(primaryStage);
 
-            Scene scene = new Scene(root);
+            Scene scene = new DefaultScene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("メニュー");
             primaryStage.show();

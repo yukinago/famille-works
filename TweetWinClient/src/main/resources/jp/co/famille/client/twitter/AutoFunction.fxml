@@ -13,7 +13,7 @@
     <ListView fx:id="targetAccount" layoutX="22.0" layoutY="27.0" prefHeight="113.0" prefWidth="157.0" />
     <Button fx:id="btnConfig" layoutX="205.0" layoutY="111.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="109.0" text="設定確認・変更" />
     <Label layoutX="22.0" layoutY="154.0" text="処理選択" />
-    <VBox layoutX="22.0" layoutY="167.0" prefHeight="129.0" prefWidth="292.0" spacing="10.0">
+    <VBox layoutX="22.0" layoutY="167.0" prefHeight="129.0" prefWidth="292.0" spacing="10.0" styleClass="box">
       <children>
         <CheckBox fx:id="chkAutoFollow" mnemonicParsing="false" text="自動フォロー" />
         <CheckBox fx:id="chkAutoUnFollow" mnemonicParsing="false" text="自動フォロー解除" />

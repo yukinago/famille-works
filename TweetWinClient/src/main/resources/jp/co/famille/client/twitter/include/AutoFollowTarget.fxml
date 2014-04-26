@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="jp.co.famille.client.twitter.controller.AutoFollowTargetController">
+  <children>
+    <Label layoutX="0.0" layoutY="0.0" text="フォロー対象" />
+    <VBox layoutX="0.0" layoutY="0.0" spacing="10.0" styleClass="border">
+      <children>
+        <CheckBox fx:id="followByUserName" mnemonicParsing="false" text="ユーザー名" />
+        <CheckBox fx:id="followByProfile" mnemonicParsing="false" text="プロフィール" />
+        <CheckBox fx:id="followTweet" mnemonicParsing="false" text="ツイート内容" />
+        <fx:include fx:id="followPeriodAutoFollow" source="PeriodFromTo.fxml" />
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>

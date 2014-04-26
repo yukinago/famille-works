@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
-
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="170.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="jp.co.famille.client.twitter.controller.MenuController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="170.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="jp.co.famille.client.twitter.controller.MenuController" >
   <children>
     <Button fx:id="manageAccount" layoutX="10.0" layoutY="15.0" mnemonicParsing="false" prefWidth="150.0" text="アカウント管理" />
     <Button fx:id="basicFunction" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefWidth="150.0" text="基本機能" />
