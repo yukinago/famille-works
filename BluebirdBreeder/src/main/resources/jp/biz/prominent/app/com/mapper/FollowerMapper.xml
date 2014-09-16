@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.biz.prominent.app.com.mapper.FollowerMapper">
+
+	<!-- カラムとフィールドのマッピング -->
+	<resultMap id="followerResultMap" type="Follower">
+		<id column="uid" property="uid" />
+		<id column="fid" property="fid" />
+		<result column="unfollow" property="unfollow" />
+		<result column="status" property="status" />
+		<result column="name" property="name" />
+		<result column="image_url" property="imageUrl" />
+		<result column="follow_time" property="followTime" />
+	</resultMap>
+
+	<!-- テーブル作成 -->
+	<update id="createTable">
+		CREATE TABLE IF NOT EXISTS follower(
+		uid INTEGER NOT NULL,
+		fid INTEGER NOT NULL,
+		unfollow TEXT,
+		status TEXT,
+		name TEXT,
+		image_url TEXT,
+		follow_time TEXT,
+		PRIMARY KEY(uid, fid)
+		)
+	</update>
+
+	<!-- 指定レコード取得 -->
+	<select id="selectByUid" resultMap="followerResultMap">
+		SELECT
+			uid,
+			fid,
+			unfollow,
+			status,
+			name,
+			image_url,
+			follow_time
+		FROM
+			follower
+		WHERE
+			uid = #{uid}
+	</select>
+
+	<!-- レコード追加 -->
+	<insert id="insert">
+		INSERT OR REPLACE INTO follower (
+			uid,
+			fid,
+			unfollow,
+			status,
+			name,
+			image_url,
+			follow_time
+		) VALUES (
+			#{follower.uid},
+			#{follower.fid},
+			#{follower.unfollow},
+			#{follower.status},
+			#{follower.name},
+			#{follower.imageUrl},
+			#{follower.followTime}
+		)
+	</insert>
+
+	<!-- レコード更新 -->
+	<update id="update">
+		UPDATE
+			follower
+		SET
+			unfollow = #{follower.unfollow},
+			status = #{follower.status},
+			name = #{follower.name},
+			image_url = #{follower.imageUrl},
+			follow_time = #{follower.followTime}
+		WHERE uid = #{follower.uid}
+			AND fid = #{follower.fid}
+	</update>
+
+	<!-- レコード削除（ユーザー指定） -->
+	<delete id="deleteByUid">
+		DELETE FROM follower
+		WHERE
+			uid = #{uid}
+	</delete>
+
+	<!-- レコード削除（フォローワー指定） -->
+	<delete id="delete">
+		DELETE FROM follower
+		WHERE uid = #{follower.uid}
+		AND fid = #{follower.fid}
+	</delete>
+
+	<!-- レコード削除（既存の未Follow対象） -->
+	<delete id="deleteExistUnFollow">
+		<bind name="off" value="@jp.biz.prominent.app.com.Constants@FLG_OFF" />
+		<bind name="unFollowStatus" value="@jp.biz.prominent.app.com.Constants@FOLLOW_NOT" />
+		DELETE FROM follower
+		WHERE uid = #{uid}
+		AND unfollow = #{off}
+		AND status = #{unFollowStatus}
+	</delete>
+
+</mapper>

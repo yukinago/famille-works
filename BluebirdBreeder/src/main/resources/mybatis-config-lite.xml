@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 各種設定情報を定義 -->
+	<properties>
+		<property name="driver" value="org.sqlite.JDBC" />
+		<property name="url" value="jdbc:sqlite:userdata_lite.sqlite3" />
+	</properties>
+	
+	<!-- 型の別名を定義 -->
+	<typeAliases>
+		<typeAlias alias="VersionUpMapper" type="jp.biz.prominent.app.com.mapper.VersionUpMapper" />
+		<typeAlias alias="User" type="jp.biz.prominent.app.entity.UserEntity" />
+		<typeAlias alias="UserMapper" type="jp.biz.prominent.app.com.mapper.UserMapper" />
+		<typeAlias alias="Follower" type="jp.biz.prominent.app.entity.FollowerEntity" />
+		<typeAlias alias="FollowerMapper" type="jp.biz.prominent.app.com.mapper.FollowerMapper" />
+		<typeAlias alias="Tweet" type="jp.biz.prominent.app.entity.TweetEntity" />
+		<typeAlias alias="TweetMapper" type="jp.biz.prominent.app.com.mapper.TweetMapper" />
+	</typeAliases>
+	
+	<!-- JDBC設定を定義 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- MapperXmlの定義 -->
+	<mappers>
+		<mapper resource="jp/biz/prominent/app/com/mapper/VersionUpMapper.xml" />
+ 		<mapper resource="jp/biz/prominent/app/com/mapper/UserMapper.xml" />
+		<mapper resource="jp/biz/prominent/app/com/mapper/FollowerMapper.xml" />
+		<mapper resource="jp/biz/prominent/app/com/mapper/TweetMapper.xml" />
+	</mappers>
+</configuration>

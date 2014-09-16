@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.biz.prominent.app.com.mapper.UserMapper">
+
+	<!-- カラムとフィールドのマッピング-->
+	<resultMap id="userResultMap" type="User">
+		<id column="uid" property="uid" />
+		<result column="name" property="name" />
+		<result column="image_url" property="imageUrl" />
+		<result column="consumer_key" property="consumerKey" />
+		<result column="consumer_secret" property="consumerSecret" />
+		<result column="access_token" property="accessToken" />
+		<result column="access_token_secret" property="accessTokenSecret" />
+		<result column="keyword1" property="keyword1" />
+		<result column="keyword2" property="keyword2" />
+		<result column="keyword3" property="keyword3" />
+		<result column="distance" property="distance" />
+		<result column="longitude" property="longitude" />
+		<result column="latitude" property="latitude" />
+		<result column="search_type" property="searchType" />
+		<result column="follow" property="follow" />
+		<result column="refollow" property="refollow" />
+		<result column="duplicate" property="duplicate" />
+		<result column="threshold_no_follow" property="thresholdNoFollow" />
+		<result column="threshold_no_tweet" property="thresholdNoTweet" />
+		<result column="daily_follow_max" property="dailyFollowMax" />
+		<result column="follow_date" property="followDate" />
+		<result column="follow_count" property="followCount" />
+		<result column="interval" property="interval" />
+		<result column="range" property="range" />
+	</resultMap>
+ 
+	<!-- テーブル作成 -->
+	<update id="createTable">
+		CREATE TABLE IF NOT EXISTS user (
+			uid INTEGER NOT NULL,
+			name TEXT NOT NULL,
+			image_url TEXT,
+			consumer_key TEXT NOT NULL,
+			consumer_secret TEXT NOT NULL,
+			access_token TEXT NOT NULL,
+			access_token_secret TEXT NOT NULL,
+			keyword1 TEXT,
+			keyword2 TEXT,
+			keyword3 TEXT,
+			distance TEXT,
+			longitude TEXT,
+			latitude TEXT,
+			search_type INTEGER,
+			follow TEXT,
+			refollow TEXT,
+			duplicate TEXT,
+			threshold_no_follow TEXT,
+			threshold_no_tweet TEXT,
+			daily_follow_max INTEGER,
+			follow_date TEXT,
+			follow_count INTEGER,
+			interval TEXT,
+			range TEXT,
+			PRIMARY KEY(uid)
+		)
+	</update>
+	
+	<!-- 全レコード取得 -->
+	<select id="selectAll" resultMap="userResultMap">
+		SELECT
+			uid,
+			name,
+			image_url,
+			consumer_key,
+			consumer_secret,
+			access_token,
+			access_token_secret,
+			keyword1,
+			keyword2,
+			keyword3,
+			distance,
+			longitude,
+			latitude,
+			search_type,
+			follow,
+			refollow,
+			duplicate,
+			threshold_no_follow,
+			threshold_no_tweet,
+			daily_follow_max,
+			follow_date,
+			follow_count,
+			interval,
+			range
+		FROM
+			user
+	</select>
+	
+	<!-- 指定レコード取得 -->
+	<select id="selectById" resultMap="userResultMap">
+		SELECT
+			uid,
+			name,
+			image_url,
+			consumer_key,
+			consumer_secret,
+			access_token,
+			access_token_secret,
+			keyword1,
+			keyword2,
+			keyword3,
+			distance,
+			longitude,
+			latitude,
+			search_type,
+			follow,
+			refollow,
+			duplicate,
+			threshold_no_follow,
+			threshold_no_tweet,
+			daily_follow_max,
+			follow_date,
+			follow_count,
+			interval,
+			range
+		FROM
+			user
+		WHERE
+			uid = #{uid}
+	</select>
+	
+	<!-- レコード追加 -->
+	<insert id="insert">
+		INSERT INTO user (
+			uid,
+			name,
+			image_url,
+			consumer_key,
+			consumer_secret,
+			access_token,
+			access_token_secret,
+			keyword1,
+			keyword2,
+			keyword3,
+			distance,
+			longitude,
+			latitude,
+			search_type,
+			follow,
+			refollow,
+			duplicate,
+			threshold_no_follow,
+			threshold_no_tweet,
+			daily_follow_max,
+			follow_date,
+			follow_count,
+			interval,
+			range
+		) VALUES (
+			#{user.uid},
+			#{user.name},
+			#{user.imageUrl},
+			#{user.consumerKey},
+			#{user.consumerSecret},
+			#{user.accessToken},
+			#{user.accessTokenSecret},
+			#{user.keyword1},
+			#{user.keyword2},
+			#{user.keyword3},
+			#{user.distance},
+			#{user.longitude},
+			#{user.latitude},
+			#{user.searchType},
+			#{user.follow},
+			#{user.refollow},
+			#{user.duplicate},
+			#{user.thresholdNoFollow},
+			#{user.thresholdNoTweet},
+			#{user.dailyFollowMax},
+			#{user.followDate},
+			#{user.followCount},
+			#{user.interval},
+			#{user.range}
+		)
+	</insert>
+	
+	<!-- レコード更新 -->
+	<update id="update">
+		UPDATE user SET
+			name = #{user.name},
+			image_url = #{user.imageUrl},
+			keyword1 = #{user.keyword1},
+			keyword2 = #{user.keyword2},
+			keyword3 = #{user.keyword3},
+			distance = #{user.distance},
+			longitude = #{user.longitude},
+			latitude = #{user.latitude},
+			search_type = #{user.searchType},
+			follow = #{user.follow},
+			refollow = #{user.refollow},
+			duplicate = #{user.duplicate},
+			threshold_no_follow = #{user.thresholdNoFollow},
+			threshold_no_tweet = #{user.thresholdNoTweet},
+			daily_follow_max = #{user.dailyFollowMax},
+			follow_date = #{user.followDate},
+			follow_count = #{user.followCount},
+			interval = #{user.interval},
+			range = #{user.range}
+		WHERE uid = #{user.uid}
+	</update>
+	
+	<!-- レコード削除 -->
+	<delete id="deleteByUid">
+		DELETE FROM user WHERE uid = #{uid}
+	</delete>
+ 
+</mapper>

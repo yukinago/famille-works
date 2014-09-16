@@ -1,0 +1,68 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.6
+version = '1.17'
+
+jar.baseName = 'twitter-client' 
+jar.version = version
+
+jar {
+	manifest {
+		attributes 'Implementation-Title': 'Bluebird Breeder', 'Implementation-Version': version 
+		attributes "Main-Class" : "jp.biz.prominent.app.main.BlueBirdBreederMain"
+	}
+//	from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+}
+
+// Jar取得先リポジトリ定義
+repositories {
+	mavenCentral()
+}
+
+// 依存ライブラリ定義
+dependencies {
+	// Commons
+	compile 'org.apache.commons:commons-io:1.+'
+	compile 'org.apache.commons:commons-lang3:3.+'
+	compile 'org.apache.commons:commons-collections4:4.+'
+	// ロギング
+	compile 'commons-logging:commons-logging:1.1.+'
+	compile 'org.slf4j:slf4j-api:1.7.+'
+	compile 'org.slf4j:slf4j-simple:1.7.+'
+	compile 'log4j:log4j:1.+'
+	// DI
+	compile 'com.google.inject:guice:3.0'
+	// MyBatis
+	compile 'org.mybatis:mybatis:3.2.+'
+	compile 'org.mybatis:mybatis-guice:3.+'
+	
+	// Twitter接続
+	compile 'org.twitter4j:twitter4j-core:[4.0,)'
+	compile 'org.apache.commons:commons-lang3:3.+'
+	compile 'org.apache.commons:commons-collections4:4.+'
+	
+	// SetterGetter省略
+	compile 'org.projectlombok:lombok:1.+'
+	
+	// Database接続
+	runtime 'org.xerial:sqlite-jdbc:3.7.+'
+	// DI実行時
+	runtime 'javax.inject:javax.inject-tck:1'
+
+	// テスト
+	testCompile 'junit:junit:4.+'
+	testCompile 'com.googlecode.jmockit:jmockit:1.+'
+}
+
+test {
+	systemProperties 'property': 'value'
+}
+
+uploadArchives {
+	repositories {
+	   flatDir {
+		   dirs 'repos'
+	   }
+	}
+}

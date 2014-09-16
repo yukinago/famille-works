@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.biz.prominent.app.com.mapper.TweetMapper">
+ 
+ 	<!-- カラムとフィールドのマッピング-->
+	<resultMap id="tweetResultMap" type="Tweet">
+		<id column="uid" property="uid" />
+		<id column="tid" property="tid" />
+		<result column="selected" property="selected" />
+		<result column="created_time" property="createdTime" />
+		<result column="template" property="template" />
+	</resultMap>
+ 
+	<!-- テーブル作成 -->
+	<update id="createTable">
+		CREATE TABLE IF NOT EXISTS tweet(
+			uid INTEGER NOT NULL,
+			tid INTEGER NOT NULL,
+			selected TEXT,
+			created_time TEXT,
+			template TEXT,
+			PRIMARY KEY(uid, tid)
+		)
+	</update>
+	
+	<!-- 指定レコード取得 -->
+	<select id="selectByUid" resultMap="tweetResultMap">
+		SELECT
+			uid,
+			tid,
+			selected,
+			created_time,
+			template
+		FROM
+			tweet
+		WHERE
+			uid = #{uid}
+	</select>
+	
+	<!-- レコード追加 -->
+	<insert id="insert">
+		INSERT OR REPLACE INTO tweet (
+			uid,
+			tid,
+			selected,
+			created_time,
+			template
+		) VALUES (
+			#{tweet.uid},
+			#{tweet.tid},
+			#{tweet.selected},
+			#{tweet.createdTime},
+			#{tweet.template}
+		)
+	</insert>
+	
+	<!-- レコード更新 -->
+	<update id="update">
+		UPDATE tweet SET
+			selected = #{tweet.selected},
+			created_time = #{tweet.createdTime},
+			template = #{tweet.template}
+		WHERE	uid = #{tweet.uid}
+			AND tid = #{tweet.tid}
+	</update>
+	
+	<!-- レコード更新（ツィートID） -->
+	<update id="updateTweetId">
+		UPDATE tweet SET
+			tid = tid - 1
+		WHERE	uid = #{tweet.uid}
+			AND	 tid > #{tweet.tid}
+	</update>
+	
+	<!-- レコード削除（ユーザー指定） -->
+	<delete id="deleteByUid">
+		DELETE FROM tweet
+		WHERE
+			uid = #{uid}
+	</delete>
+	
+	<!-- レコード削除（フォローワー指定） -->
+	<delete id="delete">
+		DELETE FROM tweet
+		WHERE	uid = #{tweet.uid}
+			AND tid = #{tweet.tid}
+	</delete>
+</mapper>

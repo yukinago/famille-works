@@ -40,7 +40,7 @@ dependencies {
         compile 'org.jfxtras:jfxtras-fxml:8.0-r1'
         compile 'org.jfxtras:jfxtras-labs:8.0-r1'
         // Famille
-        compile files('/home/yukinago/NetBeansProjects/famille-lib/famille-parent/famille-javafx/build/libs/famille-javafx-0.1.jar')
+        compile files('/home/yukinago/git/famille-lib/famille-parent/famille-javafx/build/libs/famille-javafx-0.1.jar')
     
 	// DI実行時
 	runtime 'javax.inject:javax.inject-tck:1'
